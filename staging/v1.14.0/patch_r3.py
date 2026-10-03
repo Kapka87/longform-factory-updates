@@ -36,24 +36,24 @@ if imp.strip() not in text:
     text=text.replace(anchor,anchor+imp,1)
 
 get_method='    def do_GET(self):\n'
-get_route='''    def do_GET(self):
+get_route="""    def do_GET(self):
         if self.path.split("?",1)[0]=="/api/four-channel-production/status":
             self.send_json(four_channel_production_status(ROOT)); return
-'''
+"""
 if '/api/four-channel-production/status' not in text:
     if get_method not in text:
         raise RuntimeError("v1.14 do_GET anchor missing")
     text=text.replace(get_method,get_route,1)
 
 post_method='    def do_POST(self):\n'
-post_route='''    def do_POST(self):
+post_route="""    def do_POST(self):
         if self.path.split("?",1)[0]=="/api/four-channel-production/run":
             try:
                 _body=self.read_body()
                 self.send_json(run_four_channel_production_qa(ROOT),200); return
             except Exception as e:
                 self.send_json({"ok":False,"error":"4-Channel Production QA failed: "+str(e)},400); return
-'''
+"""
 if '/api/four-channel-production/run' not in text:
     if post_method not in text:
         raise RuntimeError("v1.14 do_POST anchor missing")
