@@ -1,15 +1,15 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T09:11:44.726226+00:00",
+  "generated_at": "2026-10-03T09:20:10.979108+00:00",
   "channels": {
     "dev": {
-      "version": "1.11.0",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_CROSS_CHANNEL_MEDIA_PACK_1_11_0.lfupdate.zip",
-      "package_sha256": "4cd7325e8aa5367b4122c488f016bdabe82e084591ee555c701a84b5639cafd1",
+      "version": "1.11.1",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_MEDIA_SMOKE_UI_FIX_1_11_1.lfupdate.zip",
+      "package_sha256": "383e260944862c3f242513c11bc03cab3400783dfc1c4f0c0787ada0c7a8577d",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T09:11:44.726245+00:00",
-      "title": "Cross-Channel Media Pack",
-      "summary": "Adds isolated representative media smoke for EN_STORY, EN_BTS and JP_BTS with actual generated audio timing; no episode migration."
+      "published_at": "2026-10-03T09:20:10.979128+00:00",
+      "title": "Media Smoke UI Fix",
+      "summary": "Makes the three representative media smoke actions permanently visible as explicit run buttons; preserves v1.11.0 media smoke behavior and isolation."
     }
   }
 }
