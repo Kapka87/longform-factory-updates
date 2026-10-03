@@ -594,7 +594,7 @@ for marker in ['run_media_smoke','media_smoke_status','_body=self.read_body()','
         raise RuntimeError("control-center media smoke wiring missing: "+marker)
 if 'from cross_channel_media_smoke import media_smoke_status, run_media_smoke' not in cc:
     raise RuntimeError("media smoke import missing")
-if '"casting":"DECLARATIVE_PER_EPISODE"' not in str(CHANNELS):
+if CHANNELS["en_story"]["caps"]["voice"].get("casting")!="DECLARATIVE_PER_EPISODE":
     raise RuntimeError("EN_STORY casting must remain declarative")
 for marker in ['KPipeline','audio_query','synthesis','ffprobe','factory/_qa/cross_channel_media']:
     if marker not in MEDIA_SMOKE and marker not in MEDIA_SPEC:
