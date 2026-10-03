@@ -34,8 +34,7 @@ jobs:
           f=json.loads(Path("feed.v1142.json").read_text())
           f["generated_at"]="AUTO"
           f["channels"]["dev"]["package_sha256"]=d
-          Path("feed.json").write_text(json.dumps(f,ensure_ascii=False,indent=2)+"
-")
+          Path("feed.json").write_text(json.dumps(f,ensure_ascii=False,indent=2)+"\\n")
           print({"bytes":p.stat().st_size,"sha256":d})
           PY
           git config user.name "github-actions[bot]"
