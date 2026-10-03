@@ -1,15 +1,15 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T09:41:34.525Z",
+  "generated_at": "2026-10-03T09:48:57.590097+00:00",
   "channels": {
     "dev": {
-      "version": "1.12.1",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_CONTINUITY_STATUS_PIN_FIX_1_12_1.lfupdate.zip",
-      "package_sha256": "ea1315669a6f03b5afe7a56a5c7eae5ed687353503a88b35f2b258cf8d75293b",
+      "version": "1.12.2",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_CONTINUITY_IMPORT_FIX_1_12_2.lfupdate.zip",
+      "package_sha256": "d319739ce53f5059af27acf7773f7564d388620d98c0a66e050ad5d49505e1cf",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T09:39:19.292267+00:00",
-      "title": "Continuity Status + Pin Fix",
-      "summary": "Fixes Continuity READY state and adds explicit Active Workstream pinning for pre-manifest workstreams."
+      "published_at": "2026-10-03T09:48:57.590112+00:00",
+      "title": "Continuity Import Fix",
+      "summary": "Fixes Active Workstream pinning runtime import and adds strict build verification."
     }
   },
   "cache_bust": "1.12.1-r2"
