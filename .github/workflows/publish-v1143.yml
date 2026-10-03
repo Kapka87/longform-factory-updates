@@ -1,0 +1,67 @@
+name: Publish Longform Factory v1.14.3
+
+on:
+  push:
+    paths:
+      - "staging/v1.14.3/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-v1143
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build 1.14.3
+        run: python staging/v1.14.3/build_hotfix.py
+      - name: Verify package
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,zipfile
+          p=Path("packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_3.lfupdate.zip")
+          assert p.exists() and p.stat().st_size > 50000
+          d=hashlib.sha256(p.read_bytes()).hexdigest()
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              m=json.loads(z.read("update_manifest.json"))
+              assert m["version"]=="1.14.3"
+              for f in m["files"]:
+                  assert hashlib.sha256(z.read(f["source"])).hexdigest()==f["sha256"]
+              common=z.read("payload/runners/production_media_common_v10.py").decode()
+              assert "def resolve_executable(name):" in common
+              runner=z.read("payload/runners/en_story_production_media_v10.py").decode()
+              assert 'from production_media_common_v10 import *' in runner
+          print({"bytes":p.stat().st_size,"sha256":d})
+          PY
+      - name: Publish package and feed
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,datetime
+          p=Path("packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_3.lfupdate.zip")
+          d=hashlib.sha256(p.read_bytes()).hexdigest()
+          f=json.loads(Path("feed.v1143.json").read_text())
+          now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+          f["generated_at"]=now
+          f["channels"]["dev"]["published_at"]=now
+          f["channels"]["dev"]["package_sha256"]=d
+          f["cache_bust"]="1.14.3-"+datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+          Path("feed.json").write_text(json.dumps(f,ensure_ascii=False,indent=2)+"\n")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_3.lfupdate.zip feed.json
+          git commit -m "Publish Longform Factory v1.14.3 hotfix [skip ci]"
+          git pull --rebase origin main
+          git push
