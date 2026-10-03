@@ -12,5 +12,5 @@
       "summary": "Adds Factory-authoritative handoff state and a provider-neutral manual reasoning bridge; legacy episodes remain untouched."
     }
   },
-  "cache_bust": "1.11.1-r2"
+  "cache_bust": "1.12.0-r1"
 }
