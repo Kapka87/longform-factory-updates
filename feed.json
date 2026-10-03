@@ -1,16 +1,16 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "AUTO",
+  "generated_at": "2026-10-03T15:29:16.022333+00:00",
   "channels": {
     "dev": {
-      "version": "1.14.2",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_2.lfupdate.zip",
-      "package_sha256": "0a98fae4eb340d73dbdabe4e6eb2af51adb3a62194e7bf18bd84257aac5e4e55",
+      "version": "1.14.3",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_3.lfupdate.zip",
+      "package_sha256": "132e453d47f76c908fbd621eb1392574b6284cb6c98afd36650d21def4da6eed",
       "updater_api_min": "1.1",
-      "published_at": "AUTO",
-      "title": "Four-Channel Production Integration · Runner Executable Path Hotfix",
-      "summary": "Fixes Desktop-app ffmpeg/ffprobe discovery during actual media runner execution."
+      "published_at": "2026-10-03T15:29:16.022333+00:00",
+      "title": "Four-Channel Production Integration · Shared Executable Resolver Fix",
+      "summary": "Fixes actual media runner ffmpeg/ffprobe resolution in Desktop execution."
     }
   },
-  "cache_bust": "1.14.2-auto"
+  "cache_bust": "1.14.3-20261003T152916Z"
 }
