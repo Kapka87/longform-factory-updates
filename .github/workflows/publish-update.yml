@@ -3,7 +3,7 @@ name: Publish Longform Factory Update
 on:
   push:
     paths:
-      - "staging/v1.12.3/**"
+      - "staging/v1.13.0/**"
       - ".github/workflows/publish-update.yml"
 
 permissions:
@@ -18,32 +18,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Extract legacy updater source for audit
-        run: |
-          python - <<'PY'
-          import zipfile
-          from pathlib import Path
-          pkg=Path("packages/LONGFORM_FACTORY_REMOTE_UI_FIX_1_9_9.lfupdate.zip")
-          out=Path("staging/_inspect")
-          out.mkdir(parents=True,exist_ok=True)
-          with zipfile.ZipFile(pkg) as z:
-              names=z.namelist()
-              (out/"zip_names.txt").write_text("\n".join(names)+"\n",encoding="utf-8")
-              for src,dst in [
-                  ("payload/shared_core/update_manager.py","update_manager_1_9_9.py"),
-                  ("payload/control_center_current.py","control_center_1_9_9.py"),
-                  ("update_manifest.json","update_manifest_1_9_9.json"),
-              ]:
-                  if src in names:
-                      (out/dst).write_bytes(z.read(src))
-          PY
       - name: Build remote update package
-        run: python staging/v1.12.3/build_release.py
+        run: python staging/v1.13.0/build_release.py
       - name: Commit package and feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add feed.json packages/LONGFORM_FACTORY_REASONING_OBSERVABILITY_FIX_1_12_3.lfupdate.zip staging/_inspect
+          git add feed.json packages/LONGFORM_FACTORY_LAUNCHER_UPDATER_HARDENING_1_13_0.lfupdate.zip
           git diff --cached --quiet && exit 0
-          git commit -m "Publish Longform Factory v1.10.0 [skip ci]"
+          git commit -m "Publish Longform Factory v1.13.0 [skip ci]"
           git push
