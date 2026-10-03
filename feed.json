@@ -11,5 +11,6 @@
       "title": "Media Smoke UI Fix",
       "summary": "Makes the three representative media smoke actions permanently visible as explicit run buttons; preserves v1.11.0 media smoke behavior and isolation."
     }
-  }
+  },
+  "cache_bust": "1.11.1-r2"
 }
