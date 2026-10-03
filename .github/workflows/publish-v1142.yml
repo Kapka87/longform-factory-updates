@@ -1,0 +1,46 @@
+name: Publish Longform Factory v1.14.2
+
+on:
+  push:
+    paths:
+      - "staging/v1.14.2/**"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python staging/v1.14.2/build_hotfix.py
+      - run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,zipfile
+          p=Path("packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_2.lfupdate.zip")
+          d=hashlib.sha256(p.read_bytes()).hexdigest()
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              m=json.loads(z.read("update_manifest.json"))
+              assert m["version"]=="1.14.2"
+              for f in m["files"]:
+                  assert hashlib.sha256(z.read(f["source"])).hexdigest()==f["sha256"]
+          f=json.loads(Path("feed.v1142.json").read_text())
+          f["generated_at"]="AUTO"
+          f["channels"]["dev"]["package_sha256"]=d
+          Path("feed.json").write_text(json.dumps(f,ensure_ascii=False,indent=2)+"
+")
+          print({"bytes":p.stat().st_size,"sha256":d})
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_2.lfupdate.zip feed.json
+          git commit -m "Publish Longform Factory v1.14.2 hotfix [skip ci]"
+          git pull --rebase origin main
+          git push
