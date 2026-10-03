@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "staging/v1.13.0/**"
+      - "staging/v1.14.3/**"
       - ".github/workflows/publish-update.yml"
 
 permissions:
@@ -15,16 +16,75 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Build remote update package
+
+      - name: Detect release target
+        id: target
+        run: |
+          if git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" | grep -q "^staging/v1.14.3/"; then
+            echo "target=v1143" >> "$GITHUB_OUTPUT"
+          else
+            echo "target=v1130" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build v1.13.0 update
+        if: steps.target.outputs.target == 'v1130'
         run: python staging/v1.13.0/build_release.py
-      - name: Commit package and feed
+
+      - name: Build v1.14.3 hotfix
+        if: steps.target.outputs.target == 'v1143'
+        run: python staging/v1.14.3/build_hotfix.py
+
+      - name: Verify v1.14.3
+        if: steps.target.outputs.target == 'v1143'
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,zipfile
+          p=Path("packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_3.lfupdate.zip")
+          assert p.exists() and p.stat().st_size > 50000
+          d=hashlib.sha256(p.read_bytes()).hexdigest()
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              m=json.loads(z.read("update_manifest.json"))
+              assert m["version"]=="1.14.3"
+              for f in m["files"]:
+                  assert hashlib.sha256(z.read(f["source"])).hexdigest()==f["sha256"]
+              c=z.read("payload/runners/production_media_common_v10.py").decode()
+              assert "def resolve_executable(name):" in c
+              r=z.read("payload/runners/en_story_production_media_v10.py").decode()
+              assert 'from production_media_common_v10 import *' in r
+          feed=json.loads(Path("feed.v1143.json").read_text())
+          assert feed["channels"]["dev"]["package_sha256"]==d
+          print({"bytes":p.stat().st_size,"sha256":d})
+          PY
+
+      - name: Publish
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add feed.json packages/LONGFORM_FACTORY_LAUNCHER_UPDATER_HARDENING_1_13_0.lfupdate.zip
-          git diff --cached --quiet && exit 0
-          git commit -m "Publish Longform Factory v1.13.0 [skip ci]"
-          git push
+          if [ "${{ steps.target.outputs.target }}" = "v1143" ]; then
+            python - <<'PY'
+            from pathlib import Path
+            import json,datetime
+            f=json.loads(Path("feed.v1143.json").read_text())
+            now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+            f["generated_at"]=now
+            f["channels"]["dev"]["published_at"]=now
+            f["cache_bust"]="1.14.3-"+datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
+            Path("feed.json").write_text(json.dumps(f,ensure_ascii=False,indent=2)+"\n")
+            PY
+            git add packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_3.lfupdate.zip feed.json
+            git commit -m "Publish Longform Factory v1.14.3 [skip ci]"
+            git pull --rebase origin main
+            git push
+          else
+            git add feed.json packages/LONGFORM_FACTORY_LAUNCHER_UPDATER_HARDENING_1_13_0.lfupdate.zip
+            git diff --cached --quiet && exit 0
+            git commit -m "Publish Longform Factory v1.13.0 [skip ci]"
+            git push
+          fi
