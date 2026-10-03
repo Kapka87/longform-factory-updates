@@ -1,6 +1,6 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T09:39:19.292252+00:00",
+  "generated_at": "2026-10-03T09:41:34.525Z",
   "channels": {
     "dev": {
       "version": "1.12.1",
@@ -12,5 +12,5 @@
       "summary": "Fixes Continuity READY state and adds explicit Active Workstream pinning for pre-manifest workstreams."
     }
   },
-  "cache_bust": "1.12.0-r1"
+  "cache_bust": "1.12.1-r2"
 }
