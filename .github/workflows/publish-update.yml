@@ -3,7 +3,7 @@ name: Publish Longform Factory Update
 on:
   push:
     paths:
-      - "staging/v1.10.2/**"
+      - "staging/v1.10.3/**"
       - ".github/workflows/publish-update.yml"
 
 permissions:
@@ -19,12 +19,12 @@ jobs:
         with:
           python-version: "3.11"
       - name: Build remote update package
-        run: python staging/v1.10.2/build_release.py
+        run: python staging/v1.10.3/build_release.py
       - name: Commit package and feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add feed.json packages/LONGFORM_FACTORY_RUNTIME_HEALTH_FIX_1_10_2.lfupdate.zip
+          git add feed.json packages/LONGFORM_FACTORY_CHANNEL_QA_FIX_1_10_3.lfupdate.zip
           git diff --cached --quiet && exit 0
           git commit -m "Publish Longform Factory v1.10.0 [skip ci]"
           git push
