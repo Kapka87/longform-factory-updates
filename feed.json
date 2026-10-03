@@ -1,15 +1,15 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T07:40:00Z",
+  "generated_at": "2026-10-03T07:58:00Z",
   "channels": {
     "dev": {
       "version": "1.9.9",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_REMOTE_UPDATE_SMOKE_1_9_9.lfupdate.zip",
-      "package_sha256": "fdd2081fc7a67490cc9f6f141245d186ba28d01f91e89f6eaac827b3dc0debf4",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_REMOTE_UI_FIX_1_9_9.lfupdate.zip",
+      "package_sha256": "6ceff4c1fb221c9b64d9673fc8c95fd6021b06a5954f53490161d241911ab6db",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T07:40:00Z",
-      "title": "Remote Update Smoke Test",
-      "summary": "No production changes. Verifies the end-to-end Remote Updater path."
+      "published_at": "2026-10-03T07:58:00Z",
+      "title": "Remote Updater Smoke + Feed Input Fix",
+      "summary": "Fixes feed URL input being overwritten by auto-refresh and verifies the end-to-end remote updater path."
     }
   }
 }
