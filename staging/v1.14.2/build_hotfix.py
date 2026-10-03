@@ -75,3 +75,5 @@ Path("feed.v1142.json").write_text(json.dumps(feed,ensure_ascii=False,indent=2)+
 print(json.dumps({"bytes":OUT.stat().st_size,"sha256":digest},indent=2))
 
 # trigger publish after workflow registration
+
+# trigger after workflow fix
