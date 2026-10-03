@@ -1,16 +1,16 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T10:38:04.777439+00:00",
+  "generated_at": "2026-10-03T13:55:00+00:00",
   "channels": {
     "dev": {
-      "version": "1.13.0",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_LAUNCHER_UPDATER_HARDENING_1_13_0.lfupdate.zip",
-      "package_sha256": "4c98fd0f2f817183d9e7428300eda1e227c3e22725a590a250b69bda5ad22932",
+      "version": "1.14.0",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_0.lfupdate.zip",
+      "package_sha256": "941b04eca6d2abad76e9dce8099a5c5dd46bb26c301dfa2e8e782f17dd4cae46",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T10:38:04.777439+00:00",
-      "title": "Desktop Launcher + Updater Hardening",
-      "summary": "Repairs the Desktop launcher and forces fresh remote feed checks."
+      "published_at": "2026-10-03T13:55:00+00:00",
+      "title": "Four-Channel Production Integration",
+      "summary": "Integrates EN_STORY and JP_BTS production paths, preserves EN_BTS production, and adds four-channel production QA."
     }
   },
-  "cache_bust": "1.13.0-20261003T103804777439Z"
+  "cache_bust": "1.14.0-20261003T135500000000Z"
 }
