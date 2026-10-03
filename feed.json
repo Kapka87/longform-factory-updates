@@ -1,15 +1,15 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T08:12:09.023433+00:00",
+  "generated_at": "2026-10-03T08:27:46.925265+00:00",
   "channels": {
     "dev": {
-      "version": "1.10.0",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_CROSS_CHANNEL_FOUNDATION_1_10_0.lfupdate.zip",
-      "package_sha256": "482b5ce8875f7e0366f0aa36009b6e1a25da1f526a33e0f4178fdb4db7c48d6f",
+      "version": "1.10.1",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_RUNTIME_REPAIR_1_10_1.lfupdate.zip",
+      "package_sha256": "40029918c5deb7e1f7b21eb2ffc5d6c7878bf857339bd92082ed170126619d28",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T08:12:09.023447+00:00",
-      "title": "Cross-Channel Integration Foundation",
-      "summary": "Registers all four channel profiles/adapters with isolation QA; representative media smoke is next."
+      "published_at": "2026-10-03T08:27:46.925282+00:00",
+      "title": "Runtime Repair + Cross-Channel Recovery",
+      "summary": "Repairs mixed/rolled-back runtime state and restores four-channel adapter dispatch; no episode migration."
     }
   }
 }
