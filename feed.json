@@ -1,16 +1,16 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T14:18:00+00:00",
+  "generated_at": "2026-10-03T14:20:00+00:00",
   "channels": {
     "dev": {
       "version": "1.14.0",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_0.lfupdate.zip",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_0_r2.lfupdate.zip",
       "package_sha256": "941b04eca6d2abad76e9dce8099a5c5dd46bb26c301dfa2e8e782f17dd4cae46",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T14:18:00+00:00",
+      "published_at": "2026-10-03T14:20:00+00:00",
       "title": "Four-Channel Production Integration",
       "summary": "Integrates EN_STORY and JP_BTS production paths, preserves EN_BTS production, and adds four-channel production QA."
     }
   },
-  "cache_bust": "1.14.0-20261003T141800000000Z"
+  "cache_bust": "1.14.0-r2-20261003T142000000000Z"
 }
