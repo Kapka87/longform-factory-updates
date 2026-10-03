@@ -774,8 +774,8 @@ with zipfile.ZipFile(PREV_PKG) as z:
 # v1.13.0 — single runtime version authority.
 cc=cc.replace(
     "from shared_core.update_manager import UpdateManager, UpdateError",
-    "from shared_core.update_cache_bust import install_update_feed_cache_bust, update_cache_bust_status\\n"
-    "install_update_feed_cache_bust()\\n"
+    "from shared_core.update_cache_bust import install_update_feed_cache_bust, update_cache_bust_status\n"
+    "install_update_feed_cache_bust()\n"
     "from shared_core.update_manager import UpdateManager, UpdateError, UPDATE_API_VERSION",
     1
 )
@@ -803,10 +803,10 @@ if "from cross_channel_media_smoke import media_smoke_status, run_media_smoke" n
 if "from continuity_bridge import continuity_status, generate_continuity_snapshot, set_active_workstream_hint" not in cc:
     cc=cc.replace("from narrator_ab_lab import NarratorABLab","from narrator_ab_lab import NarratorABLab\nfrom cross_channel_integration import run_cross_channel_qa\nfrom cross_channel_media_smoke import media_smoke_status, run_media_smoke\nfrom continuity_bridge import continuity_status, generate_continuity_snapshot, set_active_workstream_hint\nfrom reasoning_provider_bridge import status as reasoning_status, execute_task as reasoning_execute_task",1)
 if "from shared_core.desktop_launcher import ensure_desktop_launcher, launcher_status" not in cc:
-    _launcher_anchor="from narrator_ab_lab import NarratorABLab\\n"
+    _launcher_anchor="from narrator_ab_lab import NarratorABLab\n"
     if _launcher_anchor not in cc:
         raise RuntimeError("desktop launcher import anchor missing")
-    cc=cc.replace(_launcher_anchor,_launcher_anchor+"from shared_core.desktop_launcher import ensure_desktop_launcher, launcher_status\\n",1)
+    cc=cc.replace(_launcher_anchor,_launcher_anchor+"from shared_core.desktop_launcher import ensure_desktop_launcher, launcher_status\n",1)
 if 'onclick="location.href=\'/channel-integration\'"' not in cc:
     cc=cc.replace('<button class="topbtn" onclick="location.href=\'/qa\'">QA Lab</button>','<button class="topbtn" onclick="location.href=\'/qa\'">QA Lab</button><button class="topbtn" onclick="location.href=\'/channel-integration\'">Channels</button>',1)
 if 'onclick="location.href=\'/continuity\'"' not in cc:
