@@ -32,10 +32,23 @@ files[common]=t.encode()
 en_adapter="payload/adapters/channels/en_bts/production_adapter_v11.py"
 if en_adapter not in files: raise SystemExit("missing EN_BTS adapter")
 t=files[en_adapter].decode()
-if "resolve_executable(" not in t:
-    imports="from production_adapter_common_v10 import *"
-    if imports not in t: raise SystemExit("EN_BTS adapter import anchor missing")
-    # wildcard import exposes shared resolver
+if "def resolve_executable(name):" not in t:
+    marker="class "
+    idx=t.find(marker)
+    if idx < 0: raise SystemExit("EN_BTS adapter class anchor missing")
+    ins="""def resolve_executable(name):
+    import os
+    found = shutil.which(name)
+    if found:
+        return found
+    for candidate in (f"/opt/homebrew/bin/{name}", f"/usr/local/bin/{name}", f"/opt/local/bin/{name}"):
+        p = Path(candidate)
+        if p.is_file() and os.access(str(p), os.X_OK):
+            return str(p)
+    return None
+
+"""
+    t=t[:idx]+ins+t[idx:]
 t=t.replace('shutil.which("ffmpeg")', 'resolve_executable("ffmpeg")').replace('shutil.which("ffprobe")', 'resolve_executable("ffprobe")')
 files[en_adapter]=t.encode()
 
