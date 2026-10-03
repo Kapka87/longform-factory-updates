@@ -1,15 +1,15 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T08:37:20.022653+00:00",
+  "generated_at": "2026-10-03T08:46:19.538021+00:00",
   "channels": {
     "dev": {
-      "version": "1.10.2",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_RUNTIME_HEALTH_FIX_1_10_2.lfupdate.zip",
-      "package_sha256": "16e3ad13f9d974a20a6f0728a0351428c7609bc84e583dec903463e2a30cd638",
+      "version": "1.10.3",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_CHANNEL_QA_FIX_1_10_3.lfupdate.zip",
+      "package_sha256": "669d33eb3d5f84b03693d447f821aedb625af77e72e0f3dffd5f341ad50966d0",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T08:37:20.022668+00:00",
-      "title": "Runtime Health Fix + Cross-Channel Recovery",
-      "summary": "Fixes health-check rollback caused by stale version reporting and restores four-channel adapter dispatch; no episode migration."
+      "published_at": "2026-10-03T08:46:19.538036+00:00",
+      "title": "Cross-Channel QA Wiring + Logic Fix",
+      "summary": "Repairs Channels QA button/API wiring and profile-isolation logic while preserving the runtime health fix; no episode migration."
     }
   }
 }
