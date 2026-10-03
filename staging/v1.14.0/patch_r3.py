@@ -118,3 +118,5 @@ feed={
 print(json.dumps({"package":str(OUT),"bytes":OUT.stat().st_size,"sha256":digest},indent=2))
 
 # trigger publish workflow
+
+# rerun-after-quote-fix
