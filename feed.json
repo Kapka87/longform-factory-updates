@@ -1,15 +1,15 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T08:27:46.925265+00:00",
+  "generated_at": "2026-10-03T08:37:20.022653+00:00",
   "channels": {
     "dev": {
-      "version": "1.10.1",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_RUNTIME_REPAIR_1_10_1.lfupdate.zip",
-      "package_sha256": "40029918c5deb7e1f7b21eb2ffc5d6c7878bf857339bd92082ed170126619d28",
+      "version": "1.10.2",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_RUNTIME_HEALTH_FIX_1_10_2.lfupdate.zip",
+      "package_sha256": "16e3ad13f9d974a20a6f0728a0351428c7609bc84e583dec903463e2a30cd638",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T08:27:46.925282+00:00",
-      "title": "Runtime Repair + Cross-Channel Recovery",
-      "summary": "Repairs mixed/rolled-back runtime state and restores four-channel adapter dispatch; no episode migration."
+      "published_at": "2026-10-03T08:37:20.022668+00:00",
+      "title": "Runtime Health Fix + Cross-Channel Recovery",
+      "summary": "Fixes health-check rollback caused by stale version reporting and restores four-channel adapter dispatch; no episode migration."
     }
   }
 }
