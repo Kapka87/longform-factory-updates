@@ -786,7 +786,7 @@ cc=cc.replace('<div class="ver">v1.9.9</div>','<div class="ver">v1.12.0</div>',1
 if "from cross_channel_media_smoke import media_smoke_status, run_media_smoke" not in cc:
     cc=cc.replace("from narrator_ab_lab import NarratorABLab","from narrator_ab_lab import NarratorABLab\nfrom cross_channel_integration import run_cross_channel_qa\nfrom cross_channel_media_smoke import media_smoke_status, run_media_smoke",1)
 if "from continuity_bridge import continuity_status, generate_continuity_snapshot" not in cc:
-    cc=cc.replace("from narrator_ab_lab import NarratorABLab","from narrator_ab_lab import NarratorABLab\\nfrom cross_channel_integration import run_cross_channel_qa\\nfrom cross_channel_media_smoke import media_smoke_status, run_media_smoke\\nfrom continuity_bridge import continuity_status, generate_continuity_snapshot\\nfrom reasoning_provider_bridge import status as reasoning_status, execute_task as reasoning_execute_task",1)
+    cc=cc.replace("from narrator_ab_lab import NarratorABLab","from narrator_ab_lab import NarratorABLab\nfrom cross_channel_integration import run_cross_channel_qa\nfrom cross_channel_media_smoke import media_smoke_status, run_media_smoke\nfrom continuity_bridge import continuity_status, generate_continuity_snapshot\nfrom reasoning_provider_bridge import status as reasoning_status, execute_task as reasoning_execute_task",1)
 if 'onclick="location.href=\'/channel-integration\'"' not in cc:
     cc=cc.replace('<button class="topbtn" onclick="location.href=\'/qa\'">QA Lab</button>','<button class="topbtn" onclick="location.href=\'/qa\'">QA Lab</button><button class="topbtn" onclick="location.href=\'/channel-integration\'">Channels</button>',1)
 if 'onclick="location.href=\'/continuity\'"' not in cc:
