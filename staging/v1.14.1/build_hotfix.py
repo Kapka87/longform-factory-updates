@@ -9,7 +9,7 @@ with zipfile.ZipFile(SRC,"r") as z: files={n:z.read(n) for n in z.namelist()}
 common_name="payload/adapters/channels/production_adapter_common_v10.py"
 common=files[common_name].decode()
 if "def resolve_executable(name):" not in common:
-    anchor="def _latest(folder,pattern):"
+    anchor="def _read(path,default=None):"
     ins="""def resolve_executable(name):
     import os
     found = shutil.which(name)
