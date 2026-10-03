@@ -570,7 +570,9 @@ add("payload/canonical/LONGFORM_FACTORY_ADAPTER_REGISTRY_v1_6.json","factory/can
 add("payload/canonical/LONGFORM_FACTORY_CHANNEL_PROFILE_MATRIX_v1_0.json","factory/canonical/LONGFORM_FACTORY_CHANNEL_PROFILE_MATRIX_v1_0.json",json.dumps(PROFILE,ensure_ascii=False,indent=2)+"\n")
 add("payload/canonical/LONGFORM_FACTORY_CROSS_CHANNEL_INTEGRATION_SPEC_v1_0.md","factory/canonical/LONGFORM_FACTORY_CROSS_CHANNEL_INTEGRATION_SPEC_v1_0.md",SPEC)
 add("payload/canonical/LONGFORM_FACTORY_ACTIVE_AUTHORITY_v1_7.json","factory/canonical/LONGFORM_FACTORY_ACTIVE_AUTHORITY_v1_7.json",json.dumps(AUTH,ensure_ascii=False,indent=2)+"\n")
-add("payload/cross_channel_integration.py","factory/cross_channel_integration.py",QA)\nadd("payload/cross_channel_media_smoke.py","factory/cross_channel_media_smoke.py",MEDIA_SMOKE)\nadd("payload/canonical/LONGFORM_FACTORY_MEDIA_SMOKE_SPEC_v1_0.md","factory/canonical/LONGFORM_FACTORY_MEDIA_SMOKE_SPEC_v1_0.md",MEDIA_SPEC)
+add("payload/cross_channel_integration.py","factory/cross_channel_integration.py",QA)
+add("payload/cross_channel_media_smoke.py","factory/cross_channel_media_smoke.py",MEDIA_SMOKE)
+add("payload/canonical/LONGFORM_FACTORY_MEDIA_SMOKE_SPEC_v1_0.md","factory/canonical/LONGFORM_FACTORY_MEDIA_SMOKE_SPEC_v1_0.md",MEDIA_SPEC)
 add("payload/channel_integration_page.html","factory/channel_integration_page.html",PAGE)
 add("payload/control_center_current.py","factory/control_center_current.py",cc,"0755")
 
