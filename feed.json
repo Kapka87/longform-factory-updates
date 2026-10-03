@@ -1,16 +1,16 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T10:28:52.372262+00:00",
+  "generated_at": "2026-10-03T10:38:04.777439+00:00",
   "channels": {
     "dev": {
-      "version": "1.12.3",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_REASONING_OBSERVABILITY_FIX_1_12_3.lfupdate.zip",
-      "package_sha256": "f089225adb3aa83a4d89bcf7d19c24f1069f6771719eb5188d31b9e46daeb49e",
+      "version": "1.13.0",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_LAUNCHER_UPDATER_HARDENING_1_13_0.lfupdate.zip",
+      "package_sha256": "4c98fd0f2f817183d9e7428300eda1e227c3e22725a590a250b69bda5ad22932",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T10:28:52.372273+00:00",
-      "title": "Reasoning Observability Fix",
-      "summary": "Shows COMPLETE task packet immediately after save and persisted Recent Tasks after reload."
+      "published_at": "2026-10-03T10:38:04.777439+00:00",
+      "title": "Desktop Launcher + Updater Hardening",
+      "summary": "Repairs the Desktop launcher and forces fresh remote feed checks."
     }
   },
-  "cache_bust": "1.12.1-r2"
+  "cache_bust": "1.13.0-20261003T103804777439Z"
 }
