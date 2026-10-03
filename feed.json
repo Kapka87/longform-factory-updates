@@ -1,15 +1,15 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T09:34:51.677777+00:00",
+  "generated_at": "2026-10-03T09:39:19.292252+00:00",
   "channels": {
     "dev": {
-      "version": "1.12.0",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_STATE_CONTINUITY_REASONING_PACK_1_12_0.lfupdate.zip",
-      "package_sha256": "6097caaca5d31b3b196a016e5e73d1510c87f57b51c3691bce9593190d21ee57",
+      "version": "1.12.1",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_CONTINUITY_STATUS_PIN_FIX_1_12_1.lfupdate.zip",
+      "package_sha256": "ea1315669a6f03b5afe7a56a5c7eae5ed687353503a88b35f2b258cf8d75293b",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T09:34:51.677792+00:00",
-      "title": "State / Continuity / Reasoning Pack",
-      "summary": "Adds Factory-authoritative handoff state and a provider-neutral manual reasoning bridge; legacy episodes remain untouched."
+      "published_at": "2026-10-03T09:39:19.292267+00:00",
+      "title": "Continuity Status + Pin Fix",
+      "summary": "Fixes Continuity READY state and adds explicit Active Workstream pinning for pre-manifest workstreams."
     }
   },
   "cache_bust": "1.12.0-r1"
