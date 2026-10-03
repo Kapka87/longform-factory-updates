@@ -58,3 +58,5 @@ print(json.dumps({"bytes":OUT.stat().st_size,"sha256":digest},indent=2))
 # trigger proven publisher for v1.14.5
 
 # trigger v1.14.5 after publish-workflow fix
+
+# release-v1145-final trigger
