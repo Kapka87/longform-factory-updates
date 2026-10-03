@@ -1,0 +1,15 @@
+{
+  "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
+  "generated_at": "2026-10-03T07:40:00Z",
+  "channels": {
+    "dev": {
+      "version": "1.9.9",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_REMOTE_UPDATE_SMOKE_1_9_9.lfupdate.zip",
+      "package_sha256": "fdd2081fc7a67490cc9f6f141245d186ba28d01f91e89f6eaac827b3dc0debf4",
+      "updater_api_min": "1.1",
+      "published_at": "2026-10-03T07:40:00Z",
+      "title": "Remote Update Smoke Test",
+      "summary": "No production changes. Verifies the end-to-end Remote Updater path."
+    }
+  }
+}
