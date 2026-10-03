@@ -116,3 +116,5 @@ feed={
 }
 (ROOT/"feed.json").write_text(json.dumps(feed,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"package":str(OUT),"bytes":OUT.stat().st_size,"sha256":digest},indent=2))
+
+# trigger publish workflow
