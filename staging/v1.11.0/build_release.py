@@ -515,8 +515,8 @@ if 'u.path=="/channel-integration"' not in cc:
         raise RuntimeError("GET channel-integration anchor missing")
     cc=cc.replace(ga,gi+ga,1)
 if 'u.path=="/api/channel-media-smoke/status"' not in cc:
-    ga='        if u.path=="/qa":\\n'
-    gi='        if u.path=="/api/channel-media-smoke/status":\\n            self.send_json(media_smoke_status(ROOT)); return\\n'
+    ga='        if u.path=="/qa":\n'
+    gi='        if u.path=="/api/channel-media-smoke/status":\n            self.send_json(media_smoke_status(ROOT)); return\n'
     if ga not in cc: raise RuntimeError("GET media-smoke anchor missing")
     cc=cc.replace(ga,gi+ga,1)
 
@@ -527,8 +527,8 @@ if 'self.path=="/api/channel-integration/run"' not in cc:
         raise RuntimeError("POST channel-integration anchor missing")
     cc=cc.replace(pa,pi+pa,1)
 if 'self.path=="/api/channel-media-smoke/run"' not in cc:
-    pa='            if self.path=="/api/updates/upload":\\n'
-    pi='            if self.path=="/api/channel-media-smoke/run":\\n                try:\\n                    body=self.read_body()\\n                    if isinstance(body,(bytes,bytearray)): body=json.loads(body.decode("utf-8") or "{}")\\n                    elif isinstance(body,str): body=json.loads(body or "{}")\\n                    out=run_media_smoke(ROOT,(body or {}).get("channel_id"))\\n                    self.send_json(out,200); return\\n                except Exception as e: self.send_json({"ok":False,"error":"Media smoke failed: "+str(e)},400); return\\n'
+    pa='            if self.path=="/api/updates/upload":\n'
+    pi='            if self.path=="/api/channel-media-smoke/run":\n                try:\n                    body=self.read_body()\n                    if isinstance(body,(bytes,bytearray)): body=json.loads(body.decode("utf-8") or "{}")\n                    elif isinstance(body,str): body=json.loads(body or "{}")\n                    out=run_media_smoke(ROOT,(body or {}).get("channel_id"))\n                    self.send_json(out,200); return\n                except Exception as e: self.send_json({"ok":False,"error":"Media smoke failed: "+str(e)},400); return\n'
     if pa not in cc: raise RuntimeError("POST media-smoke anchor missing")
     cc=cc.replace(pa,pi+pa,1)
 
