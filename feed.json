@@ -1,15 +1,15 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T07:58:00Z",
+  "generated_at": "2026-10-03T08:12:09.023433+00:00",
   "channels": {
     "dev": {
-      "version": "1.9.9",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_REMOTE_UI_FIX_1_9_9.lfupdate.zip",
-      "package_sha256": "6ceff4c1fb221c9b64d9673fc8c95fd6021b06a5954f53490161d241911ab6db",
+      "version": "1.10.0",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_CROSS_CHANNEL_FOUNDATION_1_10_0.lfupdate.zip",
+      "package_sha256": "482b5ce8875f7e0366f0aa36009b6e1a25da1f526a33e0f4178fdb4db7c48d6f",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T07:58:00Z",
-      "title": "Remote Updater Smoke + Feed Input Fix",
-      "summary": "Fixes feed URL input being overwritten by auto-refresh and verifies the end-to-end remote updater path."
+      "published_at": "2026-10-03T08:12:09.023447+00:00",
+      "title": "Cross-Channel Integration Foundation",
+      "summary": "Registers all four channel profiles/adapters with isolation QA; representative media smoke is next."
     }
   }
 }
