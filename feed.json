@@ -1,15 +1,15 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T09:20:10.979108+00:00",
+  "generated_at": "2026-10-03T09:34:51.677777+00:00",
   "channels": {
     "dev": {
-      "version": "1.11.1",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_MEDIA_SMOKE_UI_FIX_1_11_1.lfupdate.zip",
-      "package_sha256": "383e260944862c3f242513c11bc03cab3400783dfc1c4f0c0787ada0c7a8577d",
+      "version": "1.12.0",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_STATE_CONTINUITY_REASONING_PACK_1_12_0.lfupdate.zip",
+      "package_sha256": "6097caaca5d31b3b196a016e5e73d1510c87f57b51c3691bce9593190d21ee57",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T09:20:10.979128+00:00",
-      "title": "Media Smoke UI Fix",
-      "summary": "Makes the three representative media smoke actions permanently visible as explicit run buttons; preserves v1.11.0 media smoke behavior and isolation."
+      "published_at": "2026-10-03T09:34:51.677792+00:00",
+      "title": "State / Continuity / Reasoning Pack",
+      "summary": "Adds Factory-authoritative handoff state and a provider-neutral manual reasoning bridge; legacy episodes remain untouched."
     }
   },
   "cache_bust": "1.11.1-r2"
