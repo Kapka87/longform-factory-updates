@@ -1,0 +1,45 @@
+name: Publish Longform Factory v1.14 R3
+
+on:
+  push:
+    paths:
+      - "staging/v1.14.0/**"
+      - ".github/workflows/publish-v114.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build v1.14.0 r3 from validated r2
+        run: python staging/v1.14.0/patch_r3.py
+      - name: Verify package and publish feed
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, zipfile
+          p=Path("packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_0_r3.lfupdate.zip")
+          f=json.loads(Path("feed.json").read_text())
+          assert p.exists() and p.stat().st_size > 50000
+          digest=hashlib.sha256(p.read_bytes()).hexdigest()
+          assert digest == f["channels"]["dev"]["package_sha256"]
+          with zipfile.ZipFile(p) as z:
+              z.testzip()
+              m=json.loads(z.read("update_manifest.json"))
+              assert m["version"]=="1.14.0"
+              assert m["server_script"]=="factory/control_center_v114_bootstrap.py"
+          print({"bytes":p.stat().st_size,"sha256":digest})
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feed.json packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_0_r3.lfupdate.zip
+          git diff --cached --quiet && exit 0
+          git commit -m "Publish Longform Factory v1.14.0 r3 [skip ci]"
+          git push
