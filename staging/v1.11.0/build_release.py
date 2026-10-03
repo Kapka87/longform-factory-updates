@@ -67,7 +67,7 @@ class DeclarativeCapabilityAdapter:
 CHANNELS={
 "en_story":{
  "class":"ENStoryReferenceAdapter","aid":"EN_STORY_REFERENCE_ADAPTER_v1_0","cid":"EN_STORY","profile":"EN_DRAMA_v1","name":"English Story Longform","rules":["STORY_LONGFORM_EDITING_CANONICAL_RULES_v1_0"],
- "caps":{"voice":{"provider":"KOKORO","mode":"TWO_VOICE","roles":{"female":"af_heart","male":"am_liam"},"timeline_authority":"ACTUAL_GENERATED_WAV"},"editing":{"mode":"DIALOGUE_STORY_BEAT","static_first":True,"speaker_focus":True,"motion_scope":"VISUAL_RUN"},"subtitles":{"mode":"EXTERNAL_SRT","timing_authority":"ACTUAL_NARRATION_WAV"},"publishing":{"package_required":True},"visual":{"mode":"STORY_STILLS","speaker_focus_supported":True}}
+ "caps":{"voice":{"provider":"KOKORO","mode":"TWO_VOICE_DIALOGUE","casting":"DECLARATIVE_PER_EPISODE","smoke_fixture_voices":["af_heart","am_liam"],"timeline_authority":"ACTUAL_GENERATED_WAV"},"editing":{"mode":"DIALOGUE_STORY_BEAT","static_first":True,"speaker_focus":True,"motion_scope":"VISUAL_RUN"},"subtitles":{"mode":"EXTERNAL_SRT","timing_authority":"ACTUAL_NARRATION_WAV"},"publishing":{"package_required":True},"visual":{"mode":"STORY_STILLS","speaker_focus_supported":True}}
 },
 "en_bts":{
  "class":"ENBTSReferenceAdapter","aid":"EN_BTS_REFERENCE_ADAPTER_v1_0","cid":"EN_BTS","profile":"EN_TECH_v1","name":"Between the Steps","rules":["BTS_CANONICAL_VISUAL_TEMPLATE_v1_1"],
@@ -232,8 +232,10 @@ def _make_story_frames(outdir,count):
   d.rectangle((0,0,959,820),fill=(205,208,214)); d.rectangle((960,0,1919,820),fill=(195,198,205))
   d.text((110,90),"EN_STORY MEDIA SMOKE",fill=(20,20,24),font=_font(52))
   d.text((250,360),"SPEAKER A",fill=(20,20,24),font=_font(70)); d.text((1210,360),"SPEAKER B",fill=(20,20,24),font=_font(70))
-  if active==0: d.rectangle((960,0,1919,820),fill=(0,0,0,155))
-  else: d.rectangle((0,0,959,820),fill=(0,0,0,155))
+  overlay=Image.new("RGBA",im.size,(0,0,0,0)); od=ImageDraw.Draw(overlay)
+  if active==0: od.rectangle((960,0,1919,820),fill=(0,0,0,153))
+  else: od.rectangle((0,0,959,820),fill=(0,0,0,153))
+  im=Image.alpha_composite(im.convert("RGBA"),overlay).convert("RGB"); d=ImageDraw.Draw(im)
   d.text((110,745),"Fixed frame · inactive side dimmed",fill=(30,30,34),font=_font(30))
   p=outdir/f"focus_{i+1:02d}.png"; im.save(p); out.append(p)
  return out
@@ -424,7 +426,7 @@ async function runMedia(cid){document.getElementById('mediaProgress').textConten
 load();
 </script></body></html>'''
 
-PROFILE={"schema":"LONGFORM_FACTORY_CHANNEL_PROFILE_MATRIX_v1","version":"1.0","status":"FINAL_LOCK","principles":{"core_must_not_branch_on_channel_for_production_semantics":True,"actual_generated_audio_is_timeline_authority":True,"external_subtitles_default":True,"publishing_package_required":True,"existing_episode_auto_migration":False},"profiles":{"JP_STORY_v1":{"channel_id":"JP_STORY","story_mode":"NARRATION_DRIVEN","voice_provider":"VOICEVOX","voice_cardinality":"SINGLE","casting":"MALE_OR_FEMALE_BY_EPISODE","editing":"STATIC_FIRST_STORY_BEAT","media_status":"ACTIVE_REFERENCE"},"EN_DRAMA_v1":{"channel_id":"EN_STORY","story_mode":"DIALOGUE_DRIVEN","voice_provider":"KOKORO","voice_cardinality":"TWO","casting":"af_heart + am_liam current canonical pair","editing":"STATIC_FIRST_STORY_BEAT_WITH_SPEAKER_FOCUS","media_status":"PENDING_SMOKE"},"EN_TECH_v1":{"channel_id":"EN_BTS","story_mode":"INFORMATION_FIRST","voice_provider":"KOKORO","voice_cardinality":"SINGLE_DEFAULT","visual_canonical":"BTS_CANONICAL_VISUAL_TEMPLATE_v1_1","editing":"STRUCTURED_VISUAL_RUNS","media_status":"PENDING_SMOKE"},"JP_TECH_v1":{"channel_id":"JP_BTS","story_mode":"INFORMATION_FIRST","voice_provider":"VOICEVOX","voice_cardinality":"TWO_CAPABLE","casting_pairings":["male/female","male/male","female/female"],"editing":"STRUCTURED_VISUAL_RUNS","media_status":"PENDING_SMOKE"}}}
+PROFILE={"schema":"LONGFORM_FACTORY_CHANNEL_PROFILE_MATRIX_v1","version":"1.0","status":"FINAL_LOCK","principles":{"core_must_not_branch_on_channel_for_production_semantics":True,"actual_generated_audio_is_timeline_authority":True,"external_subtitles_default":True,"publishing_package_required":True,"existing_episode_auto_migration":False},"profiles":{"JP_STORY_v1":{"channel_id":"JP_STORY","story_mode":"NARRATION_DRIVEN","voice_provider":"VOICEVOX","voice_cardinality":"SINGLE","casting":"MALE_OR_FEMALE_BY_EPISODE","editing":"STATIC_FIRST_STORY_BEAT","media_status":"ACTIVE_REFERENCE"},"EN_DRAMA_v1":{"channel_id":"EN_STORY","story_mode":"DIALOGUE_DRIVEN","voice_provider":"KOKORO","voice_cardinality":"TWO","casting":"DECLARATIVE_PER_EPISODE; representative smoke fixture uses af_heart + am_liam","editing":"STATIC_FIRST_STORY_BEAT_WITH_SPEAKER_FOCUS","media_status":"PENDING_SMOKE"},"EN_TECH_v1":{"channel_id":"EN_BTS","story_mode":"INFORMATION_FIRST","voice_provider":"KOKORO","voice_cardinality":"SINGLE_DEFAULT","visual_canonical":"BTS_CANONICAL_VISUAL_TEMPLATE_v1_1","editing":"STRUCTURED_VISUAL_RUNS","media_status":"PENDING_SMOKE"},"JP_TECH_v1":{"channel_id":"JP_BTS","story_mode":"INFORMATION_FIRST","voice_provider":"VOICEVOX","voice_cardinality":"TWO_CAPABLE","casting_pairings":["male/female","male/male","female/female"],"editing":"STRUCTURED_VISUAL_RUNS","media_status":"PENDING_SMOKE"}}}
 
 SPEC='''# Longform Factory Cross-Channel Integration Spec v1.0
 
@@ -502,8 +504,8 @@ cc=cc.replace('Control Center v1.9.9 listening','Control Center v{FACTORY_VERSIO
 cc=cc.replace('<div class="ver">v1.9.9</div>','<div class="ver">v1.11.0</div>',1)
 
 # Cross-channel integration additions; safe when starting from rolled-back 1.9.9.
-if "from cross_channel_integration import run_cross_channel_qa\nfrom cross_channel_media_smoke import media_smoke_status, run_media_smoke" not in cc:
-    cc=cc.replace("from narrator_ab_lab import NarratorABLab","from narrator_ab_lab import NarratorABLab\nfrom cross_channel_integration import run_cross_channel_qa",1)
+if "from cross_channel_media_smoke import media_smoke_status, run_media_smoke" not in cc:
+    cc=cc.replace("from narrator_ab_lab import NarratorABLab","from narrator_ab_lab import NarratorABLab\nfrom cross_channel_integration import run_cross_channel_qa\nfrom cross_channel_media_smoke import media_smoke_status, run_media_smoke",1)
 if 'onclick="location.href=\'/channel-integration\'"' not in cc:
     cc=cc.replace('<button class="topbtn" onclick="location.href=\'/qa\'">QA Lab</button>','<button class="topbtn" onclick="location.href=\'/qa\'">QA Lab</button><button class="topbtn" onclick="location.href=\'/channel-integration\'">Channels</button>',1)
 if 'u.path=="/channel-integration"' not in cc:
@@ -588,6 +590,10 @@ for marker in ['RUNNING…','id="runBtn"','Representative Media Smoke','/api/cha
 for marker in ['run_media_smoke','media_smoke_status','_body=self.read_body()','/api/channel-media-smoke/run']:
     if marker not in cc:
         raise RuntimeError("control-center media smoke wiring missing: "+marker)
+if 'from cross_channel_media_smoke import media_smoke_status, run_media_smoke' not in cc:
+    raise RuntimeError("media smoke import missing")
+if '"casting":"DECLARATIVE_PER_EPISODE"' not in str(CHANNELS):
+    raise RuntimeError("EN_STORY casting must remain declarative")
 for marker in ['KPipeline','audio_query','synthesis','ffprobe','factory/_qa/cross_channel_media']:
     if marker not in MEDIA_SMOKE and marker not in MEDIA_SPEC:
         raise RuntimeError("media smoke capability missing: "+marker)
