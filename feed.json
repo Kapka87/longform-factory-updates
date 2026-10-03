@@ -1,15 +1,15 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T09:48:57.590097+00:00",
+  "generated_at": "2026-10-03T10:16:35.364405+00:00",
   "channels": {
     "dev": {
-      "version": "1.12.2",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_CONTINUITY_IMPORT_FIX_1_12_2.lfupdate.zip",
-      "package_sha256": "d319739ce53f5059af27acf7773f7564d388620d98c0a66e050ad5d49505e1cf",
+      "version": "1.12.3",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_REASONING_OBSERVABILITY_FIX_1_12_3.lfupdate.zip",
+      "package_sha256": "690677c99333372485ff45047d9f87331948c2bbccf188c495701b3de7bb1ff0",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T09:48:57.590112+00:00",
-      "title": "Continuity Import Fix",
-      "summary": "Fixes Active Workstream pinning runtime import and adds strict build verification."
+      "published_at": "2026-10-03T10:16:35.364423+00:00",
+      "title": "Reasoning Observability Fix",
+      "summary": "Shows COMPLETE task packet immediately after save and persisted Recent Tasks after reload."
     }
   },
   "cache_bust": "1.12.1-r2"
