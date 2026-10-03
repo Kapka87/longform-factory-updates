@@ -1,0 +1,4 @@
+update_manifest.json
+payload/control_center_current.py
+payload/update/update_page.html
+payload/canonical/LONGFORM_FACTORY_REMOTE_UPDATE_SMOKE_v1_1.json

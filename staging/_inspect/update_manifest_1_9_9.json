@@ -1,0 +1,33 @@
+{
+  "schema": "LONGFORM_FACTORY_UPDATE_PACKAGE_v1",
+  "package_id": "LONGFORM_FACTORY_REMOTE_UI_FIX_1_9_9",
+  "version": "1.9.9",
+  "from_versions": [
+    "1.9.8"
+  ],
+  "channel": "dev",
+  "title": "Remote Updater Smoke + Feed Input Fix",
+  "summary": "Fixes the feed URL field being overwritten by auto-refresh and verifies the end-to-end remote updater path.",
+  "server_script": "factory/control_center_current.py",
+  "files": [
+    {
+      "source": "payload/control_center_current.py",
+      "target": "factory/control_center_current.py",
+      "sha256": "e1559005cc93c2bdfa87422638a607cfbdcb209de8d98537056dbdb53827497d",
+      "mode": "0755"
+    },
+    {
+      "source": "payload/update/update_page.html",
+      "target": "factory/update/update_page.html",
+      "sha256": "6d4e6067d82d470aa94f2df48aa54764139dc2b9c2c2cdd4a636a8a42f94f2d5",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/canonical/LONGFORM_FACTORY_REMOTE_UPDATE_SMOKE_v1_1.json",
+      "target": "factory/canonical/LONGFORM_FACTORY_REMOTE_UPDATE_SMOKE_v1_1.json",
+      "sha256": "38743f5998472aaac1be9bce1eecdd5662dcee14cfeed858771d4ef221f3d1ac",
+      "mode": "0644"
+    }
+  ],
+  "delete": []
+}

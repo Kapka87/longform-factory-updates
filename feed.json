@@ -1,13 +1,13 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-03T10:16:35.364405+00:00",
+  "generated_at": "2026-10-03T10:28:52.372262+00:00",
   "channels": {
     "dev": {
       "version": "1.12.3",
       "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_REASONING_OBSERVABILITY_FIX_1_12_3.lfupdate.zip",
-      "package_sha256": "690677c99333372485ff45047d9f87331948c2bbccf188c495701b3de7bb1ff0",
+      "package_sha256": "f089225adb3aa83a4d89bcf7d19c24f1069f6771719eb5188d31b9e46daeb49e",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-03T10:16:35.364423+00:00",
+      "published_at": "2026-10-03T10:28:52.372273+00:00",
       "title": "Reasoning Observability Fix",
       "summary": "Shows COMPLETE task packet immediately after save and persisted Recent Tasks after reload."
     }
