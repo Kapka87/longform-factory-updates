@@ -1,6 +1,7 @@
 name: Publish Longform Factory Update
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "staging/v1.13.0/**"
