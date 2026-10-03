@@ -87,3 +87,4 @@ digest=sha(OUT.read_bytes())
 feed={"schema":"LONGFORM_FACTORY_UPDATE_FEED_v1","generated_at":"AUTO","channels":{"dev":{"version":"1.14.5","package_url":"https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_5.lfupdate.zip","package_sha256":digest,"updater_api_min":"1.1","published_at":"AUTO","title":"Four-Channel Production Integration · EN_BTS Executable Resolver Hotfix","summary":"Fixes EN_BTS production preflight and runner ffmpeg/ffprobe discovery."}},"cache_bust":"1.14.5-auto"}
 Path("feed.v1145.json").write_text(json.dumps(feed,ensure_ascii=False,indent=2)+"\n")
 print(json.dumps({"bytes":OUT.stat().st_size,"sha256":digest},indent=2))
+# trigger v1.14.5 publish
