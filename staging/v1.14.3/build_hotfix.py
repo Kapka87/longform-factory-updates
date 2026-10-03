@@ -54,3 +54,5 @@ feed={"schema":"LONGFORM_FACTORY_UPDATE_FEED_v1","generated_at":"AUTO","channels
 Path("feed.v1143.json").write_text(json.dumps(feed,ensure_ascii=False,indent=2)+"\n")
 print(json.dumps({"bytes":OUT.stat().st_size,"sha256":digest},indent=2))
 # trigger v1.14.5 publish
+
+# trigger proven publisher for v1.14.5
