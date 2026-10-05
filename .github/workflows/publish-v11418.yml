@@ -1,0 +1,51 @@
+name: Publish Longform Factory v1.14.18
+on:
+  push:
+    paths:
+      - "staging/v1.14.18/**"
+      - ".github/workflows/publish-v11418.yml"
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python staging/v1.14.18/build_update.py
+      - name: Verify and publish
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,zipfile,datetime
+          p=Path("packages/LONGFORM_FACTORY_UPDATER_AUTHORITY_FIX_1_14_18.lfupdate.zip")
+          assert p.exists() and p.stat().st_size>50000
+          d=hashlib.sha256(p.read_bytes()).hexdigest()
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              m=json.loads(z.read("update_manifest.json"))
+              assert m["version"]=="1.14.18"
+              assert m["server_script"]=="factory/control_center_v114_bootstrap.py"
+              b=z.read("payload/control_center_v114_bootstrap.py").decode()
+              u=z.read("payload/shared_core/update_manager.py").decode()
+              assert "UpdateManager feed fetch callsite anchor missing" not in b
+              assert "updater-callsite-freshness-11416" not in b
+              assert "_lfcb_runtime=" in u
+              for f in m["files"]:
+                  assert hashlib.sha256(z.read(f["source"])).hexdigest()==f["sha256"]
+          f=json.loads(Path("feed.v11418.json").read_text())
+          assert f["channels"]["dev"]["package_sha256"]==d
+          now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+          f["generated_at"]=now; f["channels"]["dev"]["published_at"]=now
+          f["cache_bust"]="1.14.18-"+datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+          Path("feed.json").write_text(json.dumps(f,ensure_ascii=False,indent=2)+"\n")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/LONGFORM_FACTORY_UPDATER_AUTHORITY_FIX_1_14_18.lfupdate.zip feed.json staging/v1.14.18/package_sha256.txt
+          git commit -m "Publish Longform Factory v1.14.18 [skip ci]"
+          git pull --rebase origin main
+          git push
