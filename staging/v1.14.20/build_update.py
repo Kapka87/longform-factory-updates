@@ -50,7 +50,7 @@ with tempfile.TemporaryDirectory() as td:
    p=td/n[len("payload/"):];p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(v)
  for n in (boot,ap):
   p=td/Path(n[len("payload/"):]);py_compile.compile(str(p),doraise=True)
- sys.path.insert(0,str(td/"factory"))
+ sys.path.insert(0,str(td))
  try:
   mod=importlib.import_module("adapters.channels.jp_bts.production_adapter_v11")
   Adapter=mod.JPBTSProductionAdapter
