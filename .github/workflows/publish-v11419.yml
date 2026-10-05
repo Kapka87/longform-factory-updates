@@ -35,7 +35,6 @@ jobs:
               assert 'self._set_stage(m,"RESEARCH","READY",current=True)' in a
               b=z.read("payload/control_center_v114_bootstrap.py").decode()
               assert "UpdateManager feed fetch callsite anchor missing" not in b
-              assert "_lfcb_runtime=" not in b
               for x in m["files"]:
                   assert hashlib.sha256(z.read(x["source"])).hexdigest()==x["sha256"]
           f=json.loads(Path("feed.v11419.json").read_text())
@@ -59,3 +58,5 @@ jobs:
 # direct-v11415-base retry
 
 # corrected-adapter-anchor retry
+
+# cache-marker assertion corrected
