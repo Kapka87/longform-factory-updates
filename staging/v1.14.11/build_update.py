@@ -71,3 +71,5 @@ digest=sha(OUT.read_bytes())
 feed={"schema":"LONGFORM_FACTORY_UPDATE_FEED_v1","generated_at":"AUTO","channels":{"dev":{"version":"1.14.11","package_url":"https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_REVIEW_FIX_1_14_11.lfupdate.zip","package_sha256":digest,"updater_api_min":"1.1","published_at":"AUTO","title":"Greenlight Review Runtime Fix","summary":"Repairs JP_BTS Greenlight Review UI and POST route."}},"cache_bust":"1.14.11-auto"}
 Path("feed.v11411.json").write_text(json.dumps(feed,indent=2)+"\n");Path("staging/v1.14.11/package_sha256.txt").write_text(digest+"\n")
 print(digest)
+
+# publish trigger
