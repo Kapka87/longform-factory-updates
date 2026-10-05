@@ -103,3 +103,5 @@ print(json.dumps({"sha256":digest,"bytes":OUT.stat().st_size},indent=2))
 # publish trigger
 
 # aligned publisher trigger
+
+# syntax-fix publish trigger
