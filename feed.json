@@ -3,14 +3,14 @@
   "generated_at": "AUTO",
   "channels": {
     "dev": {
-      "version": "1.14.11",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_REVIEW_FIX_1_14_11.lfupdate.zip",
-      "package_sha256": "5164ff3d159f524fc076e142794e50533827688d59746c0907099d5ce9b5bf14",
+      "version": "1.14.12",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_STABLE_UI_1_14_12.lfupdate.zip",
+      "package_sha256": "f20da58d21691d9369ed9098fcfd7a8c724a38b14c5a1c569c759cdc36a6fc6d",
       "updater_api_min": "1.1",
       "published_at": "AUTO",
-      "title": "Greenlight Review Runtime Fix",
-      "summary": "Repairs JP_BTS Greenlight Review UI and POST route."
+      "title": "Greenlight Review Stable UI",
+      "summary": "Eliminates Greenlight action flicker with mutation-driven remounting."
     }
   },
-  "cache_bust": "1.14.11-auto"
+  "cache_bust": "1.14.12-auto"
 }
