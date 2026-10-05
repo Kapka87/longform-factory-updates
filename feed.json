@@ -3,14 +3,14 @@
   "generated_at": "AUTO",
   "channels": {
     "dev": {
-      "version": "1.14.10",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_REVIEW_1_14_10.lfupdate.zip",
-      "package_sha256": "f58a37a3139824adf9c61e14873dbdadd962e40f8e82f3ce51ff8e843883be29",
+      "version": "1.14.11",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_REVIEW_FIX_1_14_11.lfupdate.zip",
+      "package_sha256": "5164ff3d159f524fc076e142794e50533827688d59746c0907099d5ce9b5bf14",
       "updater_api_min": "1.1",
       "published_at": "AUTO",
-      "title": "Greenlight Review Actions",
-      "summary": "Adds explicit Greenlight review actions and advances approved JP_BTS episodes to Editorial Ready."
+      "title": "Greenlight Review Runtime Fix",
+      "summary": "Repairs JP_BTS Greenlight Review UI and POST route."
     }
   },
-  "cache_bust": "1.14.10-auto"
+  "cache_bust": "1.14.11-auto"
 }
