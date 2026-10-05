@@ -3,14 +3,14 @@
   "generated_at": "AUTO",
   "channels": {
     "dev": {
-      "version": "1.14.14",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_EPISODE_TARGET_FIX_1_14_14.lfupdate.zip",
-      "package_sha256": "07acc797d1e143b43fb2cc58776139a4e206b9d50df540514dc5280a499da9ae",
+      "version": "1.14.15",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_PANEL_TARGET_FIX_1_14_15.lfupdate.zip",
+      "package_sha256": "ec872fb3b7fc433fa6d7f31c1c95d780098fc0dfa973b2a3e7b9778697083407",
       "updater_api_min": "1.1",
       "published_at": "AUTO",
-      "title": "Greenlight Episode Target Safety Fix",
-      "summary": "Binds Greenlight actions to the selected episode panel before approval."
+      "title": "Greenlight Panel Target Fix",
+      "summary": "Safely resolves the selected Greenlight panel and restores its review actions."
     }
   },
-  "cache_bust": "1.14.14-auto"
+  "cache_bust": "1.14.15-auto"
 }
