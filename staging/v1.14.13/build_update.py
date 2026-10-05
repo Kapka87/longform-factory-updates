@@ -1,5 +1,5 @@
 from pathlib import Path
-import hashlib,json,zipfile,py_compile,tempfile
+import hashlib,json,zipfile,py_compile,tempfile,re
 SRC=Path("packages/LONGFORM_FACTORY_RESULT_FOCUS_FIX_1_14_9.lfupdate.zip")
 OUT=Path("packages/LONGFORM_FACTORY_UPDATER_FRESHNESS_GREENLIGHT_1_14_13.lfupdate.zip")
 def sha(b): return hashlib.sha256(b).hexdigest()
@@ -29,7 +29,7 @@ cb="payload/shared_core/update_cache_bust.py"
 with zipfile.ZipFile("packages/LONGFORM_FACTORY_LAUNCHER_UPDATER_HARDENING_1_13_0.lfupdate.zip") as _hz:
     u=_hz.read(cb).decode()
 # Avoid double mutation: patch urlopen only. The original urlopen then uses the normal opener.
-u=u.replace("    urllib.request.OpenerDirector.open=_patched_opener_open\\n","")
+u=re.sub(r"^\\s*urllib\\.request\\.OpenerDirector\\.open=_patched_opener_open\\s*$","",u,flags=re.MULTILINE)
 files[cb]=u.encode()
 boot="payload/control_center_v114_bootstrap.py"; bt=files[boot].decode()
 bt=bt.replace('FACTORY_VERSION="1.14.9"','FACTORY_VERSION="1.14.13"').replace('<div class="ver">v1.14.9</div>','<div class="ver">v1.14.13</div>')
