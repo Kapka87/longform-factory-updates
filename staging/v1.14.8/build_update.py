@@ -123,3 +123,5 @@ print(json.dumps({"sha256":digest,"bytes":OUT.stat().st_size},indent=2))
 # publish trigger
 
 # retrigger publisher after workflow registration
+
+# aligned publish trigger
