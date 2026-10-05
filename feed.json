@@ -3,14 +3,14 @@
   "generated_at": "AUTO",
   "channels": {
     "dev": {
-      "version": "1.14.6",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_JP_BTS_DISCOVERY_GATE_V2_1_14_6.lfupdate.zip",
-      "package_sha256": "c83456a8d2e7d3b15e2515bc541046311bc8fec91a61dfa2ce14fe740242e103",
+      "version": "1.14.7",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_JP_BTS_DISCOVERY_UI_FIX_1_14_7.lfupdate.zip",
+      "package_sha256": "936c074c3d47aed1120f35db0c00eaa34264ab5c5557fd639f7fce545dce2c72",
       "updater_api_min": "1.1",
       "published_at": "AUTO",
-      "title": "JP_BTS Discovery Gate v2",
-      "summary": "Adds staged revenue-first D0/D1/D2 discovery for JP_BTS while preserving existing pinned episodes."
+      "title": "JP_BTS Discovery Result Input Fix",
+      "summary": "Preserves pasted AI result JSON across dashboard refreshes and aligns JP_BTS integration QA with adapter v1.1."
     }
   },
-  "cache_bust": "1.14.6-auto"
+  "cache_bust": "1.14.7-auto"
 }
