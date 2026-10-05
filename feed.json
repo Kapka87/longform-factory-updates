@@ -1,16 +1,16 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "AUTO",
+  "generated_at": "2026-10-05T06:47:39.364693+00:00",
   "channels": {
     "dev": {
-      "version": "1.14.17",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_RUNTIME_AUTHORITY_RECOVERY_1_14_17.lfupdate.zip",
-      "package_sha256": "83250aef7ae5256ed71426428edc0878ae9d0cc57f60937f0eb04c9d4207ab7b",
+      "version": "1.14.18",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_STABLE_RECOVERY_1_14_18.lfupdate.zip",
+      "package_sha256": "15df9e21a88edc700eb5128f1f322f05dcf3e929971058283fc44164575f7c5e",
       "updater_api_min": "1.1",
-      "published_at": "AUTO",
-      "title": "Runtime Authority Recovery",
-      "summary": "Recovery release: updater post-install health now launches the same v1.14 bootstrap runtime used by the app, with direct callsite feed freshness."
+      "published_at": "2026-10-05T06:47:39.364693+00:00",
+      "title": "Stable Recovery",
+      "summary": "Recovery from the last bootable v1.14.15 line; excludes the failing runtime source-rewrite anchor introduced in v1.14.16."
     }
   },
-  "cache_bust": "1.14.17-auto"
+  "cache_bust": "1.14.18-20261005T064739364706Z"
 }
