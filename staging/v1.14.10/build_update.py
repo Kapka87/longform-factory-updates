@@ -98,6 +98,7 @@ with zipfile.ZipFile(OUT) as z:
 digest=sha(OUT.read_bytes())
 feed={"schema":"LONGFORM_FACTORY_UPDATE_FEED_v1","generated_at":"AUTO","channels":{"dev":{"version":"1.14.10","package_url":"https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_REVIEW_1_14_10.lfupdate.zip","package_sha256":digest,"updater_api_min":"1.1","published_at":"AUTO","title":"Greenlight Review Actions","summary":"Adds explicit Greenlight review actions and advances approved JP_BTS episodes to Editorial Ready."}},"cache_bust":"1.14.10-auto"}
 Path("feed.v11410.json").write_text(json.dumps(feed,ensure_ascii=False,indent=2)+"\n")
+Path("staging/v1.14.10/package_sha256.txt").write_text(digest+"\n")
 print(json.dumps({"sha256":digest,"bytes":OUT.stat().st_size},indent=2))
 
 # publish trigger
