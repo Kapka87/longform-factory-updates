@@ -1,16 +1,16 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-05T06:47:39.364693+00:00",
+  "generated_at": "2026-10-05T06:58:33.254755+00:00",
   "channels": {
     "dev": {
-      "version": "1.14.18",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_STABLE_RECOVERY_1_14_18.lfupdate.zip",
-      "package_sha256": "15df9e21a88edc700eb5128f1f322f05dcf3e929971058283fc44164575f7c5e",
+      "version": "1.14.19",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_ADAPTER_FIX_1_14_19.lfupdate.zip",
+      "package_sha256": "b1186fb00315eff08a4db08d913f31b251c5ae9276703cf1b90a50aff6746239",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-05T06:47:39.364693+00:00",
-      "title": "Stable Recovery",
-      "summary": "Recovery from the last bootable v1.14.15 line; excludes the failing runtime source-rewrite anchor introduced in v1.14.16."
+      "published_at": "2026-10-05T06:58:33.254755+00:00",
+      "title": "Greenlight Adapter Fix",
+      "summary": "Fixes JP_BTS Greenlight review episode-path handling and advances approved episodes to canonical RESEARCH READY."
     }
   },
-  "cache_bust": "1.14.18-20261005T064739364706Z"
+  "cache_bust": "1.14.19-20261005T065833254765Z"
 }
