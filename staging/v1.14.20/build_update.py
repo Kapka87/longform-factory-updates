@@ -58,7 +58,7 @@ with tempfile.TemporaryDirectory() as td:
    root=td/("case_"+decision); ep=root/"projects"/"JP_BTS"/"episodes"/"JP_BTS_EPTEST";ep.mkdir(parents=True)
    manifest={"episode_id":"JP_BTS_EPTEST","lifecycle":{"current_stage":"GREENLIGHT","stages":{"GREENLIGHT":{"runtime_state":"NEEDS_REVIEW"}}},"jp_bts_discovery_v2":{"status":"DISCOVERY_PASS","winner_candidate_id":"ETC","history":[]}}
    (ep/"episode_manifest.json").write_text(json.dumps(manifest),encoding="utf-8")
-   a=Adapter(root); out=a.review_greenlight("JP_BTS_EPTEST",decision)
+   a=Adapter.__new__(Adapter); a.root=root; out=a.review_greenlight("JP_BTS_EPTEST",decision)
    saved=json.loads((ep/"episode_manifest.json").read_text())
    assert out["current_stage"]==expected_stage,(decision,out)
    assert saved["lifecycle"]["stages"]["GREENLIGHT"]["runtime_state"]==("COMPLETE" if decision=="APPROVE" else ("NEEDS_REVIEW" if decision=="HOLD" else "DROPPED"))
