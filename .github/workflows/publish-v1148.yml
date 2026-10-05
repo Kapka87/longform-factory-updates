@@ -1,8 +1,6 @@
 name: Publish Longform Factory v1.14.8
 on:
   push:
-    paths:
-      - "staging/v1.14.8/build_update.py"
 permissions:
   contents: write
 jobs:
