@@ -1,0 +1,58 @@
+name: Publish Longform Factory v1.14.6
+
+on:
+  push:
+    paths:
+      - "staging/v1.14.6/build_update.py"
+      - "staging/v1.14.6/production_adapter_v11.py"
+      - ".github/workflows/publish-v1146.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python staging/v1.14.6/build_update.py
+      - name: Contract regression
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,zipfile,tempfile,sys
+          p=Path("packages/LONGFORM_FACTORY_JP_BTS_DISCOVERY_GATE_V2_1_14_6.lfupdate.zip")
+          assert p.exists() and p.stat().st_size > 50000
+          d=hashlib.sha256(p.read_bytes()).hexdigest()
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              m=json.loads(z.read("update_manifest.json")); assert m["version"]=="1.14.6"
+              for f in m["files"]: assert hashlib.sha256(z.read(f["source"])).hexdigest()==f["sha256"]
+              reg=json.loads(z.read("payload/adapters/adapter_registry.json"))
+              assert reg["channels"]["JP_BTS"]["default_adapter"]=="JP_BTS_PRODUCTION_ADAPTER_v1_1"
+              assert reg["channels"]["JP_BTS"]["previous_default_adapter"]=="JP_BTS_PRODUCTION_ADAPTER_v1_0"
+              assert reg["channels"]["EN_BTS"]["default_adapter"]=="EN_BTS_PRODUCTION_ADAPTER_v1_2"
+              assert reg["channels"]["EN_STORY"]["default_adapter"]=="EN_STORY_PRODUCTION_ADAPTER_v1_0"
+              assert reg["channels"]["JP_STORY"]["default_adapter"]=="JP_STORY_REFERENCE_ADAPTER_v1_4"
+              auth=json.loads(z.read("payload/canonical/LONGFORM_FACTORY_ACTIVE_AUTHORITY_v2_0.json"))
+              assert auth["application_policy"]["existing_episode_auto_migration"]=="DISABLED"
+              a=z.read("payload/adapters/channels/jp_bts/production_adapter_v11.py").decode()
+              compile(a,"production_adapter_v11.py","exec")
+              for token in ["D0_WIDE","D1_MARKET_SCREEN","D2_DEEP_VALIDATION","K1_NO_MARKET_EVIDENCE","K6_COMMODITY_EXPLANATION","winner_candidate_id","Never fabricate YouTube statistics"]:
+                  assert token in a,token
+          feed=json.loads(Path("feed.v1146.json").read_text()); assert feed["channels"]["dev"]["package_sha256"]==d
+          print({"bytes":p.stat().st_size,"sha256":d,"regression":"PASS"})
+          PY
+      - name: Publish
+        run: |
+          cp feed.v1146.json feed.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/LONGFORM_FACTORY_JP_BTS_DISCOVERY_GATE_V2_1_14_6.lfupdate.zip feed.json
+          git commit -m "Publish Longform Factory v1.14.6 [skip ci]"
+          git pull --rebase origin main
+          git push
