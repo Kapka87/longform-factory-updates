@@ -51,3 +51,5 @@ jobs:
           git commit -m "Publish Longform Factory v1.14.19 [skip ci]"
           git pull --rebase origin main
           git push
+
+# retry after build-anchor inspection
