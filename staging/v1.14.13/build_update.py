@@ -24,36 +24,13 @@ if "def review_greenlight(" not in s:
         return {"ok":True,"decision":decision,"winner_candidate_id":winner,"current_stage":self._stage(m),"current_state":self._state(m)}
 '''
 files[ap]=s.encode()
-# v1.14.13: updater owns feed freshness directly; no dependency on global urllib monkey-patching.
-um="payload/shared_core/update_manager.py"
-# update_manager is not carried by the v1.14.9 delta package; import the canonical updater from v1.13.0 hardening.
+# v1.14.13: make feed freshness deterministic in the installed cache-bust module.
+cb="payload/shared_core/update_cache_bust.py"
 with zipfile.ZipFile("packages/LONGFORM_FACTORY_LAUNCHER_UPDATER_HARDENING_1_13_0.lfupdate.zip") as _hz:
-    u=_hz.read(um).decode()
-old='''        req=urllib.request.Request(
-            url,
-            headers={
-              "User-Agent":"LongformFactoryUpdater/1.1",
-              "Accept":"application/json"
-            }
-        )'''
-new='''        _p=urllib.parse.urlsplit(url)
-        _q=urllib.parse.parse_qsl(_p.query,keep_blank_values=True)
-        _q=[(k,v) for k,v in _q if k!="_lfcb"]
-        import time as _time
-        _q.append(("_lfcb",str(_time.time_ns())))
-        fresh_url=urllib.parse.urlunsplit((_p.scheme,_p.netloc,_p.path,urllib.parse.urlencode(_q),_p.fragment))
-        req=urllib.request.Request(
-            fresh_url,
-            headers={
-              "User-Agent":"LongformFactoryUpdater/1.1",
-              "Accept":"application/json",
-              "Cache-Control":"no-cache, no-store, max-age=0",
-              "Pragma":"no-cache"
-            }
-        )'''
-if old not in u: raise RuntimeError("UpdateManager _fetch_json request anchor missing")
-u=u.replace(old,new,1)
-files[um]=u.encode()
+    u=_hz.read(cb).decode()
+# Avoid double mutation: patch urlopen only. The original urlopen then uses the normal opener.
+u=u.replace("    urllib.request.OpenerDirector.open=_patched_opener_open\\n","")
+files[cb]=u.encode()
 boot="payload/control_center_v114_bootstrap.py"; bt=files[boot].decode()
 bt=bt.replace('FACTORY_VERSION="1.14.9"','FACTORY_VERSION="1.14.13"').replace('<div class="ver">v1.14.9</div>','<div class="ver">v1.14.13</div>')
 anchor='runtime=ROOT/"factory"/"state"/"control_center_v114_runtime.py"'
@@ -83,20 +60,21 @@ if "greenlight-review-11411" not in text:
 if anchor not in bt: raise RuntimeError("runtime anchor missing")
 bt=bt.replace(anchor,patch+"\n"+anchor,1); files[boot]=bt.encode()
 m=json.loads(files["update_manifest.json"]);m.update(package_id="LONGFORM_FACTORY_UPDATER_FRESHNESS_GREENLIGHT_1_14_13",version="1.14.13",from_versions=["1.14.11"],title="Updater Freshness + Greenlight Stable UI",summary="Makes remote feed freshness intrinsic to UpdateManager and keeps Greenlight actions stable without polling.")
-# Ensure newly introduced updater file is installed by this delta.
-if not any(f.get("source")==um for f in m["files"]):
- m["files"].append({"source":um,"target":"factory/shared_core/update_manager.py","sha256":sha(files[um]),"mode":"0644"})
+# Ensure repaired cache-bust module is installed by this delta.
+if not any(f.get("source")==cb for f in m["files"]):
+ m["files"].append({"source":cb,"target":"factory/shared_core/update_cache_bust.py","sha256":sha(files[cb]),"mode":"0644"})
 for f in m["files"]:
  if f["source"] in files:f["sha256"]=sha(files[f["source"]])
 files["update_manifest.json"]=(json.dumps(m,ensure_ascii=False,indent=2)+"\n").encode()
 with tempfile.TemporaryDirectory() as td:
- for n in [boot,ap,um]:
+ for n in [boot,ap,cb]:
   p=Path(td)/Path(n).name;p.write_bytes(files[n]);py_compile.compile(str(p),doraise=True)
 assert "greenlight-review-11410" not in files[boot].decode()
 assert "self.read_body()" in files[boot].decode() and "self.send_json(" in files[boot].decode()
-assert '"_lfcb"' in files[um].decode()
-assert '"Cache-Control":"no-cache, no-store, max-age=0"' in files[um].decode()
-assert "fresh_url" in files[um].decode()
+assert '"_lfcb"' in files[cb].decode()
+assert 'headers["Cache-Control"]="no-cache"' in files[cb].decode()
+assert "urllib.request.urlopen=_patched_urlopen" in files[cb].decode()
+assert "urllib.request.OpenerDirector.open=_patched_opener_open" not in files[cb].decode()
 with zipfile.ZipFile(OUT,"w",zipfile.ZIP_DEFLATED) as z:
  for n,v in files.items():z.writestr(n,v)
 with zipfile.ZipFile(OUT) as z:
