@@ -19,7 +19,7 @@ jobs:
           cp feed.v11410.json feed.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add packages/LONGFORM_FACTORY_GREENLIGHT_REVIEW_1_14_10.lfupdate.zip feed.json
+          git add packages/LONGFORM_FACTORY_GREENLIGHT_REVIEW_1_14_10.lfupdate.zip feed.json staging/v1.14.10/package_sha256.txt
           git commit -m "Publish Longform Factory v1.14.10 [skip ci]"
           git pull --rebase origin main
           git push
