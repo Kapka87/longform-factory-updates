@@ -50,3 +50,5 @@ jobs:
 # fixture-import-root retry
 
 # constructor-independent fixture retry
+
+# complete-fixture-deps retry
