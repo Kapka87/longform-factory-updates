@@ -17,7 +17,7 @@ new='''    def review_greenlight(self, episode_id, decision, note=""):
             raise RuntimeError("Episode manifest not found: "+str(manifest_path))
         m=json.loads(manifest_path.read_text(encoding="utf-8"))
 '''
-if old not in s: raise RuntimeError("broken review_greenlight anchor missing")
+if old not in s:\n    print("DEBUG review?", "def review_greenlight" in s, "episode_dir?", "self._episode_dir" in s, "load_manifest?", "self._load_manifest" in s)\n    raise RuntimeError("broken review_greenlight anchor missing")
 s=s.replace(old,new,1)
 # Align approval with canonical JP_BTS lifecycle: RESEARCH is the stage after GREENLIGHT.
 old2='''            self._set_stage(m,"GREENLIGHT","COMPLETE")
