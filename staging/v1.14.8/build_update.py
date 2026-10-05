@@ -121,3 +121,5 @@ Path("feed.v1148.json").write_text(json.dumps(feed,ensure_ascii=False,indent=2)+
 print(json.dumps({"sha256":digest,"bytes":OUT.stat().st_size},indent=2))
 
 # publish trigger
+
+# retrigger publisher after workflow registration
