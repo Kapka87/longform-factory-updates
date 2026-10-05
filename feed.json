@@ -3,14 +3,14 @@
   "generated_at": "AUTO",
   "channels": {
     "dev": {
-      "version": "1.14.15",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_PANEL_TARGET_FIX_1_14_15.lfupdate.zip",
-      "package_sha256": "ec872fb3b7fc433fa6d7f31c1c95d780098fc0dfa973b2a3e7b9778697083407",
+      "version": "1.14.16",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_UPDATER_CALLSITE_FIX_1_14_16.lfupdate.zip",
+      "package_sha256": "5bd12eb3bdd9ca71b75214205b86fc0fe334135b4477bb661062693d975215f1",
       "updater_api_min": "1.1",
       "published_at": "AUTO",
-      "title": "Greenlight Panel Target Fix",
-      "summary": "Safely resolves the selected Greenlight panel and restores its review actions."
+      "title": "Updater Callsite Freshness Fix",
+      "summary": "Root fix: every UpdateManager remote check now uses a unique feed URL at the callsite, independent of urllib monkey-patch behavior."
     }
   },
-  "cache_bust": "1.14.15-auto"
+  "cache_bust": "1.14.16-auto"
 }
