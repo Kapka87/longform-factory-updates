@@ -48,3 +48,5 @@ jobs:
           git push
 
 # fixture-import-root retry
+
+# constructor-independent fixture retry
