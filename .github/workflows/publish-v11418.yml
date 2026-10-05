@@ -21,7 +21,7 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import json,hashlib,zipfile,datetime
-          p=Path("packages/LONGFORM_FACTORY_UPDATER_AUTHORITY_FIX_1_14_18.lfupdate.zip")
+          p=Path("packages/LONGFORM_FACTORY_STABLE_RECOVERY_1_14_18.lfupdate.zip")
           assert p.exists() and p.stat().st_size>50000
           d=hashlib.sha256(p.read_bytes()).hexdigest()
           with zipfile.ZipFile(p) as z:
@@ -43,7 +43,7 @@ jobs:
           PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add packages/LONGFORM_FACTORY_UPDATER_AUTHORITY_FIX_1_14_18.lfupdate.zip feed.json staging/v1.14.18/package_sha256.txt
+          git add packages/LONGFORM_FACTORY_STABLE_RECOVERY_1_14_18.lfupdate.zip feed.json staging/v1.14.18/package_sha256.txt
           git commit -m "Publish Longform Factory v1.14.18 [skip ci]"
           git pull --rebase origin main
           git push
