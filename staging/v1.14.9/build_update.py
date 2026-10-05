@@ -51,3 +51,5 @@ digest=sha(OUT.read_bytes())
 feed={"schema":"LONGFORM_FACTORY_UPDATE_FEED_v1","generated_at":"AUTO","channels":{"dev":{"version":"1.14.9","package_url":"https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_RESULT_FOCUS_FIX_1_14_9.lfupdate.zip","package_sha256":digest,"updater_api_min":"1.1","published_at":"AUTO","title":"AI Result Focus Fix","summary":"Pauses dashboard auto-refresh only while AI Result JSON owns focus, preserving continuous typing without DOM replacement."}},"cache_bust":"1.14.9-auto"}
 Path("feed.v1149.json").write_text(json.dumps(feed,ensure_ascii=False,indent=2)+"\n")
 print(digest)
+
+# publish trigger
