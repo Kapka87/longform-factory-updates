@@ -3,14 +3,14 @@
   "generated_at": "AUTO",
   "channels": {
     "dev": {
-      "version": "1.14.9",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_RESULT_FOCUS_FIX_1_14_9.lfupdate.zip",
-      "package_sha256": "cfc8e852415632f01701c16a3ddbdae52b28d659e083c072bce0ed500e2dd1ce",
+      "version": "1.14.10",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_REVIEW_1_14_10.lfupdate.zip",
+      "package_sha256": "5943d358d1217d9b88fcc238fdcb6bfc087241524a27b6818d965c9268b792c7",
       "updater_api_min": "1.1",
       "published_at": "AUTO",
-      "title": "AI Result Focus Fix",
-      "summary": "Pauses dashboard auto-refresh only while AI Result JSON owns focus, preserving continuous typing without DOM replacement."
+      "title": "Greenlight Review Actions",
+      "summary": "Adds explicit Greenlight review actions and advances approved JP_BTS episodes to Editorial Ready."
     }
   },
-  "cache_bust": "1.14.9-auto"
+  "cache_bust": "1.14.10-auto"
 }
