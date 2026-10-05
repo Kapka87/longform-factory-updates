@@ -91,3 +91,5 @@ digest=sha(OUT.read_bytes())
 feed={"schema":"LONGFORM_FACTORY_UPDATE_FEED_v1","generated_at":"AUTO","channels":{"dev":{"version":"1.14.7","package_url":"https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_JP_BTS_DISCOVERY_UI_FIX_1_14_7.lfupdate.zip","package_sha256":digest,"updater_api_min":"1.1","published_at":"AUTO","title":"JP_BTS Discovery Result Input Fix","summary":"Preserves pasted AI result JSON across dashboard refreshes and aligns JP_BTS integration QA with adapter v1.1."}},"cache_bust":"1.14.7-auto"}
 Path("feed.v1147.json").write_text(json.dumps(feed,ensure_ascii=False,indent=2)+"\n")
 print(json.dumps({"bytes":OUT.stat().st_size,"sha256":digest},indent=2))
+
+# publish trigger
