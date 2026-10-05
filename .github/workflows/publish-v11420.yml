@@ -42,9 +42,9 @@ jobs:
           PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase --autostash origin main
           git add packages/LONGFORM_FACTORY_GREENLIGHT_CONTRACT_FIX_1_14_20.lfupdate.zip feed.json staging/v1.14.20/package_sha256.txt
           git commit -m "Publish Longform Factory v1.14.20 [skip ci]"
-          git pull --rebase origin main
           git push
 
 # fixture-import-root retry
@@ -56,3 +56,5 @@ jobs:
 # harness-syntax retry
 
 # base-stub-content retry
+
+# publish-order hardened
