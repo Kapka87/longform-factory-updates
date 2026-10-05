@@ -3,14 +3,14 @@
   "generated_at": "AUTO",
   "channels": {
     "dev": {
-      "version": "1.14.8",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_RESULT_INPUT_STABILITY_1_14_8.lfupdate.zip",
-      "package_sha256": "010b71abab9a8ca0731386a3918f68da6b9a53f464e105555c45c9ae5f0b7bdb",
+      "version": "1.14.9",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_RESULT_FOCUS_FIX_1_14_9.lfupdate.zip",
+      "package_sha256": "cfc8e852415632f01701c16a3ddbdae52b28d659e083c072bce0ed500e2dd1ce",
       "updater_api_min": "1.1",
       "published_at": "AUTO",
-      "title": "AI Result Input Stability",
-      "summary": "Replaces the v1.14.7 MutationObserver workaround with stable result-input handling so pasted JSON remains editable during dashboard refresh."
+      "title": "AI Result Focus Fix",
+      "summary": "Pauses dashboard auto-refresh only while AI Result JSON owns focus, preserving continuous typing without DOM replacement."
     }
   },
-  "cache_bust": "1.14.8-auto"
+  "cache_bust": "1.14.9-auto"
 }
