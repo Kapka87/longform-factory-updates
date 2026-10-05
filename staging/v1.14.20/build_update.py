@@ -50,7 +50,11 @@ with tempfile.TemporaryDirectory() as td:
    p=td/n[len("payload/"):];p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(v)
  for n in (boot,ap):
   p=td/Path(n[len("payload/"):]);py_compile.compile(str(p),doraise=True)
- stub=td/"adapters"/"channels"/"base_capability_adapter.py"\n stub.parent.mkdir(parents=True,exist_ok=True)\n if not stub.exists(): stub.write_text("class DeclarativeCapabilityAdapter:\\n    def __init__(self,root): self.root=root\\n    def describe(self,context): return {}\\n    def preflight(self,stage,context): return {\\\"checks\\\":[]}\\n",encoding="utf-8")\n sys.path.insert(0,str(td))
+ stub=td/"adapters"/"channels"/"base_capability_adapter.py"
+ stub.parent.mkdir(parents=True,exist_ok=True)
+ if not stub.exists():
+  stub.write_text('class DeclarativeCapabilityAdapter:\\n    def __init__(self,root): self.root=root\\n    def describe(self,context): return {}\\n    def preflight(self,stage,context): return {"checks":[]}\\n',encoding="utf-8")
+ sys.path.insert(0,str(td))
  try:
   mod=importlib.import_module("adapters.channels.jp_bts.production_adapter_v11")
   Adapter=mod.JPBTSProductionAdapter
