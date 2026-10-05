@@ -39,7 +39,7 @@ m.update(
  version="1.14.18",
  from_versions=["1.13.0","1.14.14","1.14.15","1.14.16","1.14.17"],
  title="Updater Authority Fix",
- summary="Root recovery: removes runtime self-modifying updater patching from the bootstrap and moves unique feed URL generation into the UpdateManager module itself.",
+ summary="Root recovery: removes the invalid runtime UpdateManager source-patching block from bootstrap and restores the verified updater cache-bust module as the single feed-freshness authority.",
  server_script="factory/control_center_v114_bootstrap.py"
 )
 for f in m["files"]:
@@ -60,7 +60,7 @@ with zipfile.ZipFile(OUT) as z:
     assert "_lfcb_runtime=" in z.read(manager).decode()
     for f in mm["files"]: assert sha(z.read(f["source"]))==f["sha256"]
 digest=sha(OUT.read_bytes())
-feed={"schema":"LONGFORM_FACTORY_UPDATE_FEED_v1","generated_at":"AUTO","channels":{"dev":{"version":"1.14.18","package_url":"https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_UPDATER_AUTHORITY_FIX_1_14_18.lfupdate.zip","package_sha256":digest,"updater_api_min":"1.1","published_at":"AUTO","title":"Updater Authority Fix","summary":"Root recovery: bootstrap no longer rewrites updater code at runtime; UpdateManager owns fresh-feed URL generation directly."}},"cache_bust":"1.14.18-auto"}
+feed={"schema":"LONGFORM_FACTORY_UPDATE_FEED_v1","generated_at":"AUTO","channels":{"dev":{"version":"1.14.18","package_url":"https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_UPDATER_AUTHORITY_FIX_1_14_18.lfupdate.zip","package_sha256":digest,"updater_api_min":"1.1","published_at":"AUTO","title":"Updater Authority Fix","summary":"Root recovery: bootstrap no longer performs invalid updater source patching; the verified cache-bust module remains the single feed-freshness authority."}},"cache_bust":"1.14.18-auto"}
 Path("feed.v11418.json").write_text(json.dumps(feed,indent=2)+"\n")
 Path("staging/v1.14.18/package_sha256.txt").parent.mkdir(parents=True,exist_ok=True)
 Path("staging/v1.14.18/package_sha256.txt").write_text(digest+"\n")
