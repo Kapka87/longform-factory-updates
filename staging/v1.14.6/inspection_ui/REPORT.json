@@ -1,0 +1,13 @@
+{
+  "source": "packages/LONGFORM_FACTORY_JP_BTS_DISCOVERY_GATE_V2_1_14_6.lfupdate.zip",
+  "source_sha256": "c83456a8d2e7d3b15e2515bc541046311bc8fec91a61dfa2ce14fe740242e103",
+  "matches": [
+    {
+      "path": "payload/channel_integration_page.html",
+      "hits": [
+        "innerHTML"
+      ],
+      "snapshot": "staging/v1.14.6/inspection_ui/channel_integration_page.html"
+    }
+  ]
+}
