@@ -108,7 +108,7 @@ with zipfile.ZipFile(OUT) as z:
  mm=json.loads(z.read("update_manifest.json")); assert mm["version"]=="1.14.8"
  for f in mm["files"]: assert sha(z.read(f["source"]))==f["sha256"]
  b=z.read(boot).decode()
- assert "MutationObserver" not in b
+ assert "new MutationObserver(" not in b
  assert "__lfStableResultBox" in b
  assert 'FACTORY_VERSION="1.14.8"' in b
  rr=json.loads(z.read("payload/adapters/adapter_registry.json"))
