@@ -1,0 +1,67 @@
+{
+  "source": "packages/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_5.lfupdate.zip",
+  "source_sha256": "a532640a9689749f3948947ead3f762a020e4034862a74be0a6bf20dced9603f",
+  "entries": [
+    {
+      "path": "update_manifest.json",
+      "present": true,
+      "bytes": 5463,
+      "sha256": "91384ae399bc34997fe679fddf67905e0dae34cd6c5aeac32df40f3e7cc0f606",
+      "snapshot": "staging/v1.14.6/inspection/update_manifest.json"
+    },
+    {
+      "path": "payload/adapters/channels/jp_bts/production_adapter_v10.py",
+      "present": true,
+      "bytes": 5783,
+      "sha256": "e52ea0f2f29fc28e0e5e429c80885a1d3c8f1b3a2a8843587921ef9061cfc796",
+      "snapshot": "staging/v1.14.6/inspection/production_adapter_v10.py"
+    },
+    {
+      "path": "payload/adapters/channels/production_adapter_common_v10.py",
+      "present": true,
+      "bytes": 22818,
+      "sha256": "584575ab0c9baee16a46c3adae8f0210395eeedcb52b51f1f56d206769a46e79",
+      "snapshot": "staging/v1.14.6/inspection/production_adapter_common_v10.py"
+    },
+    {
+      "path": "payload/reasoning_provider_bridge.py",
+      "present": false
+    },
+    {
+      "path": "payload/adapters/adapter_registry.json",
+      "present": true,
+      "bytes": 8551,
+      "sha256": "f228b97df5e7e67edbd33648f7dd8e72d0ce25e3c9096c4dec056b638e92f308",
+      "snapshot": "staging/v1.14.6/inspection/adapter_registry.json"
+    },
+    {
+      "path": "payload/canonical/LONGFORM_FACTORY_ADAPTER_REGISTRY_v2_0.json",
+      "present": true,
+      "bytes": 8551,
+      "sha256": "f228b97df5e7e67edbd33648f7dd8e72d0ce25e3c9096c4dec056b638e92f308",
+      "snapshot": "staging/v1.14.6/inspection/LONGFORM_FACTORY_ADAPTER_REGISTRY_v2_0.json"
+    },
+    {
+      "path": "payload/canonical/LONGFORM_FACTORY_ACTIVE_AUTHORITY_v2_0.json",
+      "present": true,
+      "bytes": 986,
+      "sha256": "7ebfa255217fe1a2953f00b614134a12c12424716e35a5b3235408dcaa7c28cc",
+      "snapshot": "staging/v1.14.6/inspection/LONGFORM_FACTORY_ACTIVE_AUTHORITY_v2_0.json"
+    },
+    {
+      "path": "payload/control_center_v114_bootstrap.py",
+      "present": true,
+      "bytes": 2502,
+      "sha256": "1d5a814ec9f7961303ead33813970e816f85369d6646dac621b632853de74176",
+      "snapshot": "staging/v1.14.6/inspection/control_center_v114_bootstrap.py"
+    }
+  ],
+  "jp_bts_candidates": [
+    "payload/adapters/channels/jp_bts/production_adapter_v10.py",
+    "payload/runners/jp_bts_production_media_v10.py"
+  ],
+  "adapter_registry_candidates": [
+    "payload/adapters/adapter_registry.json",
+    "payload/canonical/LONGFORM_FACTORY_ADAPTER_REGISTRY_v2_0.json"
+  ]
+}

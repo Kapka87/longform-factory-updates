@@ -1,0 +1,129 @@
+{
+  "schema": "LONGFORM_FACTORY_UPDATE_PACKAGE_v1",
+  "package_id": "LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_1_14_5",
+  "version": "1.14.5",
+  "from_versions": [
+    "1.14.4"
+  ],
+  "channel": "dev",
+  "title": "Four-Channel Production Integration · EN_BTS Executable Resolver Hotfix",
+  "summary": "Fixes EN_BTS production preflight and runner executable resolution under the Desktop app environment.",
+  "server_script": "factory/control_center_v114_bootstrap.py",
+  "files": [
+    {
+      "source": "payload/adapters/adapter_registry.json",
+      "target": "factory/adapters/adapter_registry.json",
+      "sha256": "f228b97df5e7e67edbd33648f7dd8e72d0ce25e3c9096c4dec056b638e92f308",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/adapters/channels/en_bts/production_adapter_v10.py",
+      "target": "factory/adapters/channels/en_bts/production_adapter_v10.py",
+      "sha256": "e6ba60c90872ffb98613a0f3d594a2762afb741816a47d4f0ea4de0cf4d981c7",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/adapters/channels/en_bts/production_adapter_v11.py",
+      "target": "factory/adapters/channels/en_bts/production_adapter_v11.py",
+      "sha256": "d744be35e9a727c45dcb859c6327b453869e3bc45cf21163922e379efca16e27",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/adapters/channels/en_bts/production_adapter_v12.py",
+      "target": "factory/adapters/channels/en_bts/production_adapter_v12.py",
+      "sha256": "740ec80a2f00479d5bf7cd3e480633254c340f949c2e4cbb153f5a801a5be987",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/adapters/channels/en_story/production_adapter_v10.py",
+      "target": "factory/adapters/channels/en_story/production_adapter_v10.py",
+      "sha256": "77795023441d82a7ce6b95002fabe60da9fa98e8a8dcb087ac79e841d2248c4e",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/adapters/channels/jp_bts/production_adapter_v10.py",
+      "target": "factory/adapters/channels/jp_bts/production_adapter_v10.py",
+      "sha256": "e52ea0f2f29fc28e0e5e429c80885a1d3c8f1b3a2a8843587921ef9061cfc796",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/adapters/channels/production_adapter_common_v10.py",
+      "target": "factory/adapters/channels/production_adapter_common_v10.py",
+      "sha256": "584575ab0c9baee16a46c3adae8f0210395eeedcb52b51f1f56d206769a46e79",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/canonical/LONGFORM_FACTORY_ACTIVE_AUTHORITY_v2_0.json",
+      "target": "factory/canonical/LONGFORM_FACTORY_ACTIVE_AUTHORITY_v2_0.json",
+      "sha256": "7ebfa255217fe1a2953f00b614134a12c12424716e35a5b3235408dcaa7c28cc",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/canonical/LONGFORM_FACTORY_ADAPTER_REGISTRY_v2_0.json",
+      "target": "factory/canonical/LONGFORM_FACTORY_ADAPTER_REGISTRY_v2_0.json",
+      "sha256": "f228b97df5e7e67edbd33648f7dd8e72d0ce25e3c9096c4dec056b638e92f308",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/canonical/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_INTEGRATION_v1_0.md",
+      "target": "factory/canonical/LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_INTEGRATION_v1_0.md",
+      "sha256": "b07b56ccecce576bf5f51a184e2f47d01b999fc70ee37c0aff839f5b1a3338ff",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/channel_integration_page.html",
+      "target": "factory/channel_integration_page.html",
+      "sha256": "6c54d793394e0896c88af239afd85c3579379715a14acf2dba96684ad09ec6e8",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/control_center_v114_bootstrap.py",
+      "target": "factory/control_center_v114_bootstrap.py",
+      "sha256": "1d5a814ec9f7961303ead33813970e816f85369d6646dac621b632853de74176",
+      "mode": "0755"
+    },
+    {
+      "source": "payload/cross_channel_integration.py",
+      "target": "factory/cross_channel_integration.py",
+      "sha256": "58ed3d432b9b224b5ad97617ecdd45c890bef8362898648def69c7dc4b43cc18",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/launcher/launch_longform_factory.sh",
+      "target": "factory/launcher/launch_longform_factory.sh",
+      "sha256": "6e25079fbbe1d38acc16a23448c91964952961f19a171587b53fce5907ba2f4b",
+      "mode": "0755"
+    },
+    {
+      "source": "payload/qa/four_channel_production_integration.py",
+      "target": "factory/qa/four_channel_production_integration.py",
+      "sha256": "402318af0183abc13a1c7e45c51c900767bcb35526a9191270fa3315a685ce76",
+      "mode": "0755"
+    },
+    {
+      "source": "payload/runners/en_bts_production_media_v10.py",
+      "target": "factory/runners/en_bts_production_media_v10.py",
+      "sha256": "1d904c0fce91013a16b4731814c639d39fc4721bd2454fae1eabbea462f1fd87",
+      "mode": "0755"
+    },
+    {
+      "source": "payload/runners/en_story_production_media_v10.py",
+      "target": "factory/runners/en_story_production_media_v10.py",
+      "sha256": "07ad6987571f44001b2b1a9d46546028cca967b15668cc2a73c1f7b4262cec52",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/runners/jp_bts_production_media_v10.py",
+      "target": "factory/runners/jp_bts_production_media_v10.py",
+      "sha256": "72de50b77ecc7cca39ae47795e0d6d409ba1bbbfff187648bf5cae018c2f4728",
+      "mode": "0644"
+    },
+    {
+      "source": "payload/runners/production_media_common_v10.py",
+      "target": "factory/runners/production_media_common_v10.py",
+      "sha256": "26d913ef6914bcae8aa676585686f79320b493fed26c8b4ded3ed1534ca940a7",
+      "mode": "0644"
+    }
+  ],
+  "delete": []
+}

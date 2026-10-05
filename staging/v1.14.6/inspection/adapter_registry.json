@@ -1,0 +1,246 @@
+{
+  "registry_version": "2.0",
+  "contract": "LONGFORM_FACTORY_ADAPTER_CONTRACT_v1_0",
+  "adapters": {
+    "JP_STORY_REFERENCE_ADAPTER_v1_0": {
+      "adapter_id": "JP_STORY_REFERENCE_ADAPTER_v1_0",
+      "module": "adapters.channels.jp_story.reference_adapter",
+      "class": "JPStoryReferenceAdapter",
+      "channel_id": "JP_STORY",
+      "profile": "JP_STORY_v1",
+      "status": "LEGACY_PINNED",
+      "requires": {
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "JP_STORY_v1"
+      }
+    },
+    "JP_STORY_REFERENCE_ADAPTER_v1_1": {
+      "adapter_id": "JP_STORY_REFERENCE_ADAPTER_v1_1",
+      "module": "adapters.channels.jp_story.reference_adapter_v11",
+      "class": "JPStoryReferenceAdapter",
+      "channel_id": "JP_STORY",
+      "profile": "JP_STORY_v1",
+      "status": "LEGACY_PINNED",
+      "requires": {
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "JP_STORY_v1"
+      }
+    },
+    "JP_STORY_REFERENCE_ADAPTER_v1_2": {
+      "adapter_id": "JP_STORY_REFERENCE_ADAPTER_v1_2",
+      "module": "adapters.channels.jp_story.reference_adapter_v12",
+      "class": "JPStoryReferenceAdapter",
+      "channel_id": "JP_STORY",
+      "profile": "JP_STORY_v1",
+      "status": "LEGACY_PINNED",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "JP_STORY_v1"
+      }
+    },
+    "JP_STORY_LEGACY_MEDIA_ADAPTER_v1_0": {
+      "adapter_id": "JP_STORY_LEGACY_MEDIA_ADAPTER_v1_0",
+      "module": "adapters.channels.jp_story.legacy_media_adapter",
+      "class": "JPStoryLegacyMediaAdapter",
+      "channel_id": "JP_STORY",
+      "profile": "JP_STORY_v1",
+      "status": "LEGACY_PINNED",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.0,<1.2",
+        "profile": "JP_STORY_v1"
+      }
+    },
+    "JP_STORY_REFERENCE_ADAPTER_v1_3": {
+      "adapter_id": "JP_STORY_REFERENCE_ADAPTER_v1_3",
+      "module": "adapters.channels.jp_story.reference_adapter_v13",
+      "class": "JPStoryReferenceAdapter",
+      "channel_id": "JP_STORY",
+      "profile": "JP_STORY_v1",
+      "status": "LEGACY_PINNED",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "JP_STORY_v1"
+      }
+    },
+    "JP_STORY_LEGACY_MEDIA_ADAPTER_v1_1": {
+      "adapter_id": "JP_STORY_LEGACY_MEDIA_ADAPTER_v1_1",
+      "module": "adapters.channels.jp_story.legacy_media_adapter_v11",
+      "class": "JPStoryLegacyMediaAdapter",
+      "channel_id": "JP_STORY",
+      "profile": "JP_STORY_v1",
+      "status": "LEGACY_PINNED",
+      "requires": {
+        "core_contract": ">=1.0,<1.2",
+        "manifest_schema": ">=1.0,<1.2",
+        "profile": "JP_STORY_v1"
+      }
+    },
+    "JP_STORY_REFERENCE_ADAPTER_v1_4": {
+      "adapter_id": "JP_STORY_REFERENCE_ADAPTER_v1_4",
+      "module": "adapters.channels.jp_story.reference_adapter_v14",
+      "class": "JPStoryReferenceAdapter",
+      "channel_id": "JP_STORY",
+      "profile": "JP_STORY_v1",
+      "status": "ACTIVE_REFERENCE",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "JP_STORY_v1"
+      }
+    },
+    "JP_STORY_LEGACY_MEDIA_ADAPTER_v1_2": {
+      "adapter_id": "JP_STORY_LEGACY_MEDIA_ADAPTER_v1_2",
+      "module": "adapters.channels.jp_story.legacy_media_adapter_v12",
+      "class": "JPStoryLegacyMediaAdapter",
+      "channel_id": "JP_STORY",
+      "profile": "JP_STORY_v1",
+      "status": "LEGACY_RUNTIME_COMPAT",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.0,<1.2",
+        "profile": "JP_STORY_v1"
+      }
+    },
+    "EN_STORY_REFERENCE_ADAPTER_v1_0": {
+      "adapter_id": "EN_STORY_REFERENCE_ADAPTER_v1_0",
+      "module": "adapters.channels.en_story.reference_adapter_v10",
+      "class": "ENStoryReferenceAdapter",
+      "channel_id": "EN_STORY",
+      "profile": "EN_DRAMA_v1",
+      "status": "ACTIVE_MEDIA_SMOKE",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "EN_DRAMA_v1"
+      }
+    },
+    "EN_BTS_REFERENCE_ADAPTER_v1_0": {
+      "adapter_id": "EN_BTS_REFERENCE_ADAPTER_v1_0",
+      "module": "adapters.channels.en_bts.reference_adapter_v10",
+      "class": "ENBTSReferenceAdapter",
+      "channel_id": "EN_BTS",
+      "profile": "EN_TECH_v1",
+      "status": "ACTIVE_MEDIA_SMOKE",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "EN_TECH_v1"
+      }
+    },
+    "JP_BTS_REFERENCE_ADAPTER_v1_0": {
+      "adapter_id": "JP_BTS_REFERENCE_ADAPTER_v1_0",
+      "module": "adapters.channels.jp_bts.reference_adapter_v10",
+      "class": "JPBTSReferenceAdapter",
+      "channel_id": "JP_BTS",
+      "profile": "JP_TECH_v1",
+      "status": "ACTIVE_MEDIA_SMOKE",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "JP_TECH_v1"
+      }
+    },
+    "EN_BTS_PRODUCTION_ADAPTER_v1_0": {
+      "adapter_id": "EN_BTS_PRODUCTION_ADAPTER_v1_0",
+      "module": "adapters.channels.en_bts.production_adapter_v10",
+      "class": "ENBTSProductionAdapter",
+      "channel_id": "EN_BTS",
+      "profile": "EN_TECH_v1",
+      "status": "LEGACY_CANDIDATE",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "EN_TECH_v1"
+      }
+    },
+    "EN_BTS_PRODUCTION_ADAPTER_v1_1": {
+      "adapter_id": "EN_BTS_PRODUCTION_ADAPTER_v1_1",
+      "module": "adapters.channels.en_bts.production_adapter_v11",
+      "class": "ENBTSProductionAdapter",
+      "channel_id": "EN_BTS",
+      "profile": "EN_TECH_v1",
+      "status": "LEGACY_ACTIVE_PRODUCTION",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "EN_TECH_v1"
+      }
+    },
+    "EN_BTS_PRODUCTION_ADAPTER_v1_2": {
+      "adapter_id": "EN_BTS_PRODUCTION_ADAPTER_v1_2",
+      "module": "adapters.channels.en_bts.production_adapter_v12",
+      "class": "ENBTSProductionAdapter",
+      "channel_id": "EN_BTS",
+      "profile": "EN_TECH_v1",
+      "status": "ACTIVE_PRODUCTION",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "EN_TECH_v1"
+      }
+    },
+    "EN_STORY_PRODUCTION_ADAPTER_v1_0": {
+      "adapter_id": "EN_STORY_PRODUCTION_ADAPTER_v1_0",
+      "module": "adapters.channels.en_story.production_adapter_v10",
+      "class": "ENStoryProductionAdapter",
+      "channel_id": "EN_STORY",
+      "profile": "EN_DRAMA_v1",
+      "status": "ACTIVE_PRODUCTION",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "EN_DRAMA_v1"
+      }
+    },
+    "JP_BTS_PRODUCTION_ADAPTER_v1_0": {
+      "adapter_id": "JP_BTS_PRODUCTION_ADAPTER_v1_0",
+      "module": "adapters.channels.jp_bts.production_adapter_v10",
+      "class": "JPBTSProductionAdapter",
+      "channel_id": "JP_BTS",
+      "profile": "JP_TECH_v1",
+      "status": "ACTIVE_PRODUCTION",
+      "requires": {
+        "core_contract": ">=1.0,<2.0",
+        "manifest_schema": ">=1.2,<2.0",
+        "profile": "JP_TECH_v1"
+      }
+    }
+  },
+  "channels": {
+    "JP_STORY": {
+      "default_adapter": "JP_STORY_REFERENCE_ADAPTER_v1_4",
+      "profile": "JP_STORY_v1",
+      "status": "ACTIVE_REFERENCE",
+      "legacy_default_adapter": "JP_STORY_LEGACY_MEDIA_ADAPTER_v1_2",
+      "integration_status": "ACTIVE_MEDIA_REFERENCE"
+    },
+    "EN_STORY": {
+      "default_adapter": "EN_STORY_PRODUCTION_ADAPTER_v1_0",
+      "reference_adapter": "EN_STORY_REFERENCE_ADAPTER_v1_0",
+      "profile": "EN_DRAMA_v1",
+      "status": "ACTIVE_PRODUCTION",
+      "integration_status": "ACTIVE_PRODUCTION",
+      "media_binding": "ACTIVE_MEDIA_SMOKE"
+    },
+    "EN_BTS": {
+      "default_adapter": "EN_BTS_PRODUCTION_ADAPTER_v1_2",
+      "previous_default_adapter": "EN_BTS_PRODUCTION_ADAPTER_v1_1",
+      "reference_adapter": "EN_BTS_REFERENCE_ADAPTER_v1_0",
+      "profile": "EN_TECH_v1",
+      "status": "ACTIVE_PRODUCTION",
+      "integration_status": "ACTIVE_PRODUCTION",
+      "media_binding": "ACTIVE_MEDIA_SMOKE"
+    },
+    "JP_BTS": {
+      "default_adapter": "JP_BTS_PRODUCTION_ADAPTER_v1_0",
+      "reference_adapter": "JP_BTS_REFERENCE_ADAPTER_v1_0",
+      "profile": "JP_TECH_v1",
+      "status": "ACTIVE_PRODUCTION",
+      "integration_status": "ACTIVE_PRODUCTION",
+      "media_binding": "ACTIVE_MEDIA_SMOKE"
+    }
+  }
+}

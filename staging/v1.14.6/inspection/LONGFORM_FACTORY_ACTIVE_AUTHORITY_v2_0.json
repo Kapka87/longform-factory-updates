@@ -1,0 +1,31 @@
+{
+  "authority_pointer_version": "2.0",
+  "status": "ACTIVE_RELEASE_CANDIDATE",
+  "scope": "Longform Factory Shared Core",
+  "runtime_version": "1.14.0",
+  "adapter_registry": "LONGFORM_FACTORY_ADAPTER_REGISTRY_v2_0",
+  "four_channel_production": "LONGFORM_FACTORY_FOUR_CHANNEL_PRODUCTION_INTEGRATION_v1_0",
+  "channels": {
+    "JP_STORY": {
+      "adapter": "JP_STORY_REFERENCE_ADAPTER_v1_4",
+      "integration": "ACTIVE_MEDIA_REFERENCE"
+    },
+    "EN_STORY": {
+      "adapter": "EN_STORY_PRODUCTION_ADAPTER_v1_0",
+      "integration": "ACTIVE_PRODUCTION"
+    },
+    "EN_BTS": {
+      "adapter": "EN_BTS_PRODUCTION_ADAPTER_v1_2",
+      "integration": "ACTIVE_PRODUCTION"
+    },
+    "JP_BTS": {
+      "adapter": "JP_BTS_PRODUCTION_ADAPTER_v1_0",
+      "integration": "ACTIVE_PRODUCTION"
+    }
+  },
+  "application_policy": {
+    "existing_episode_auto_migration": "DISABLED",
+    "image_generation_binding": "PROVIDER_NEUTRAL",
+    "next_gate": "FOUR_CHANNEL_PRODUCTION_QA_PASS"
+  }
+}
