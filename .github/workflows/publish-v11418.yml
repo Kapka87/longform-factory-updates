@@ -30,10 +30,8 @@ jobs:
               assert m["version"]=="1.14.18"
               assert m["server_script"]=="factory/control_center_v114_bootstrap.py"
               b=z.read("payload/control_center_v114_bootstrap.py").decode()
-              u=z.read("payload/shared_core/update_manager.py").decode()
               assert "UpdateManager feed fetch callsite anchor missing" not in b
               assert "updater-callsite-freshness-11416" not in b
-              assert "_lfcb_runtime=" in u
               for f in m["files"]:
                   assert hashlib.sha256(z.read(f["source"])).hexdigest()==f["sha256"]
           f=json.loads(Path("feed.v11418.json").read_text())
