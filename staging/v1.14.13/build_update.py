@@ -26,7 +26,9 @@ if "def review_greenlight(" not in s:
 files[ap]=s.encode()
 # v1.14.13: updater owns feed freshness directly; no dependency on global urllib monkey-patching.
 um="payload/shared_core/update_manager.py"
-u=files[um].decode()
+# update_manager is not carried by the v1.14.9 delta package; import the canonical updater from v1.13.0 hardening.
+with zipfile.ZipFile("packages/LONGFORM_FACTORY_LAUNCHER_UPDATER_HARDENING_1_13_0.lfupdate.zip") as _hz:
+    u=_hz.read(um).decode()
 old='''        req=urllib.request.Request(
             url,
             headers={
@@ -81,6 +83,9 @@ if "greenlight-review-11411" not in text:
 if anchor not in bt: raise RuntimeError("runtime anchor missing")
 bt=bt.replace(anchor,patch+"\n"+anchor,1); files[boot]=bt.encode()
 m=json.loads(files["update_manifest.json"]);m.update(package_id="LONGFORM_FACTORY_UPDATER_FRESHNESS_GREENLIGHT_1_14_13",version="1.14.13",from_versions=["1.14.11"],title="Updater Freshness + Greenlight Stable UI",summary="Makes remote feed freshness intrinsic to UpdateManager and keeps Greenlight actions stable without polling.")
+# Ensure newly introduced updater file is installed by this delta.
+if not any(f.get("source")==um for f in m["files"]):
+ m["files"].append({"source":um,"target":"factory/shared_core/update_manager.py","sha256":sha(files[um]),"mode":"0644"})
 for f in m["files"]:
  if f["source"] in files:f["sha256"]=sha(files[f["source"]])
 files["update_manifest.json"]=(json.dumps(m,ensure_ascii=False,indent=2)+"\n").encode()
