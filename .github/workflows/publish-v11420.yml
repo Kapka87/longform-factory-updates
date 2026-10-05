@@ -52,3 +52,5 @@ jobs:
 # constructor-independent fixture retry
 
 # complete-fixture-deps retry
+
+# harness-syntax retry
