@@ -3,14 +3,14 @@
   "generated_at": "AUTO",
   "channels": {
     "dev": {
-      "version": "1.14.16",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_UPDATER_CALLSITE_FIX_1_14_16.lfupdate.zip",
-      "package_sha256": "5bd12eb3bdd9ca71b75214205b86fc0fe334135b4477bb661062693d975215f1",
+      "version": "1.14.17",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_RUNTIME_AUTHORITY_RECOVERY_1_14_17.lfupdate.zip",
+      "package_sha256": "83250aef7ae5256ed71426428edc0878ae9d0cc57f60937f0eb04c9d4207ab7b",
       "updater_api_min": "1.1",
       "published_at": "AUTO",
-      "title": "Updater Callsite Freshness Fix",
-      "summary": "Root fix: every UpdateManager remote check now uses a unique feed URL at the callsite, independent of urllib monkey-patch behavior."
+      "title": "Runtime Authority Recovery",
+      "summary": "Recovery release: updater post-install health now launches the same v1.14 bootstrap runtime used by the app, with direct callsite feed freshness."
     }
   },
-  "cache_bust": "1.14.16-auto"
+  "cache_bust": "1.14.17-auto"
 }
