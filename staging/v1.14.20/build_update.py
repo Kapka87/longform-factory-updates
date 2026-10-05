@@ -53,7 +53,11 @@ with tempfile.TemporaryDirectory() as td:
  stub=td/"adapters"/"channels"/"base_capability_adapter.py"
  stub.parent.mkdir(parents=True,exist_ok=True)
  if not stub.exists():
-  stub.write_text('class DeclarativeCapabilityAdapter:\\n    def __init__(self,root): self.root=root\\n    def describe(self,context): return {}\\n    def preflight(self,stage,context): return {"checks":[]}\\n',encoding="utf-8")
+  stub.write_text("""class DeclarativeCapabilityAdapter:
+    def __init__(self,root): self.root=root
+    def describe(self,context): return {}
+    def preflight(self,stage,context): return {"checks":[]}
+""",encoding="utf-8")
  sys.path.insert(0,str(td))
  try:
   mod=importlib.import_module("adapters.channels.jp_bts.production_adapter_v11")
