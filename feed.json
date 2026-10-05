@@ -1,16 +1,16 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-05T06:59:15.114794+00:00",
+  "generated_at": "2026-10-05T07:09:16.232651+00:00",
   "channels": {
     "dev": {
-      "version": "1.14.19",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_ADAPTER_FIX_1_14_19.lfupdate.zip",
-      "package_sha256": "698a09df0176ef575ef3248367d2f7b80fe4a371363f749038d2b62294b93dce",
+      "version": "1.14.20",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_CONTRACT_FIX_1_14_20.lfupdate.zip",
+      "package_sha256": "31c95fd9299dd5fff8907f70ab850f40a0588d7a80e2afed0489374d7e8413ae",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-05T06:59:15.114794+00:00",
-      "title": "Greenlight Adapter Fix",
-      "summary": "Fixes JP_BTS Greenlight review episode-path handling and advances approved episodes to canonical RESEARCH READY."
+      "published_at": "2026-10-05T07:09:16.232651+00:00",
+      "title": "Greenlight Contract Fix",
+      "summary": "JP_BTS Discovery-v2 Greenlight review now delegates to the tested base lifecycle contract; APPROVE/HOLD/REJECT fixture tests are mandatory."
     }
   },
-  "cache_bust": "1.14.19-20261005T065915114806Z"
+  "cache_bust": "1.14.20-20261005T070916232663Z"
 }
