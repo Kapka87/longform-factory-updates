@@ -1,16 +1,16 @@
 {
   "schema": "LONGFORM_FACTORY_UPDATE_FEED_v1",
-  "generated_at": "2026-10-05T07:09:16.232651+00:00",
+  "generated_at": "2026-10-05T07:10:05.286998+00:00",
   "channels": {
     "dev": {
       "version": "1.14.20",
       "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_CONTRACT_FIX_1_14_20.lfupdate.zip",
-      "package_sha256": "31c95fd9299dd5fff8907f70ab850f40a0588d7a80e2afed0489374d7e8413ae",
+      "package_sha256": "490a2586fc0fe503f8083f06a489b60e08deee57aa6f9722dddc9c449176e2cf",
       "updater_api_min": "1.1",
-      "published_at": "2026-10-05T07:09:16.232651+00:00",
+      "published_at": "2026-10-05T07:10:05.286998+00:00",
       "title": "Greenlight Contract Fix",
       "summary": "JP_BTS Discovery-v2 Greenlight review now delegates to the tested base lifecycle contract; APPROVE/HOLD/REJECT fixture tests are mandatory."
     }
   },
-  "cache_bust": "1.14.20-20261005T070916232663Z"
+  "cache_bust": "1.14.20-20261005T071005287010Z"
 }
