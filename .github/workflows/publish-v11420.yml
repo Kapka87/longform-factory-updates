@@ -1,0 +1,48 @@
+name: Publish Longform Factory v1.14.20 Greenlight Contract Fix
+on:
+  push:
+    paths:
+      - "staging/v1.14.20/**"
+      - ".github/workflows/publish-v11420.yml"
+permissions:
+  contents: write
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - name: Build and run Greenlight fixture regression
+        run: python staging/v1.14.20/build_update.py
+      - name: Verify and publish
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,zipfile,datetime
+          p=Path("packages/LONGFORM_FACTORY_GREENLIGHT_CONTRACT_FIX_1_14_20.lfupdate.zip")
+          assert p.exists() and p.stat().st_size>50000
+          d=hashlib.sha256(p.read_bytes()).hexdigest()
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              m=json.loads(z.read("update_manifest.json"))
+              assert m["version"]=="1.14.20"
+              assert m["server_script"]=="factory/control_center_v114_bootstrap.py"
+              a=z.read("payload/adapters/channels/jp_bts/production_adapter_v11.py").decode()
+              for bad in ("self._episode_dir","self._load_manifest","self._state("): assert bad not in a
+              assert "self._greenlight(ep,m" in a
+              assert "self._stage_state(m)" in a
+              for x in m["files"]: assert hashlib.sha256(z.read(x["source"])).hexdigest()==x["sha256"]
+          f=json.loads(Path("feed.v11420.json").read_text());assert f["channels"]["dev"]["package_sha256"]==d
+          now=datetime.datetime.now(datetime.timezone.utc).isoformat();f["generated_at"]=now;f["channels"]["dev"]["published_at"]=now
+          f["cache_bust"]="1.14.20-"+datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+          Path("feed.json").write_text(json.dumps(f,ensure_ascii=False,indent=2)+"\n")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/LONGFORM_FACTORY_GREENLIGHT_CONTRACT_FIX_1_14_20.lfupdate.zip feed.json staging/v1.14.20/package_sha256.txt
+          git commit -m "Publish Longform Factory v1.14.20 [skip ci]"
+          git pull --rebase origin main
+          git push
