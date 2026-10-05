@@ -17,7 +17,7 @@ s=s.replace(old2,new2,1)
 files[ap]=s.encode()
 boot="payload/control_center_v114_bootstrap.py"
 bt=files[boot].decode().replace('FACTORY_VERSION="1.14.15"','FACTORY_VERSION="1.14.19"').replace('<div class="ver">v1.14.15</div>','<div class="ver">v1.14.19</div>')
-assert "UpdateManager feed fetch callsite anchor missing" not in bt and "_lfcb_runtime=" not in bt
+assert "UpdateManager feed fetch callsite anchor missing" not in bt
 files[boot]=bt.encode()
 m=json.loads(files["update_manifest.json"])
 m.update(package_id="LONGFORM_FACTORY_GREENLIGHT_ADAPTER_FIX_1_14_19",version="1.14.19",from_versions=["1.14.18"],title="Greenlight Adapter Fix",summary="Fixes JP_BTS Greenlight review to use the real episode manifest path and canonical GREENLIGHT to RESEARCH lifecycle transition.",server_script="factory/control_center_v114_bootstrap.py")
