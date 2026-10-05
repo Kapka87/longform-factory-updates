@@ -3,14 +3,14 @@
   "generated_at": "AUTO",
   "channels": {
     "dev": {
-      "version": "1.14.13",
-      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_UPDATER_FRESHNESS_GREENLIGHT_1_14_13.lfupdate.zip",
-      "package_sha256": "f0aa8f8f2b88323be446e0c557795f7959c800932cc6530695bcff063261aa9f",
+      "version": "1.14.14",
+      "package_url": "https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_EPISODE_TARGET_FIX_1_14_14.lfupdate.zip",
+      "package_sha256": "07acc797d1e143b43fb2cc58776139a4e206b9d50df540514dc5280a499da9ae",
       "updater_api_min": "1.1",
       "published_at": "AUTO",
-      "title": "Updater Freshness + Greenlight Stable UI",
-      "summary": "Makes feed freshness intrinsic to UpdateManager and preserves stable Greenlight actions."
+      "title": "Greenlight Episode Target Safety Fix",
+      "summary": "Binds Greenlight actions to the selected episode panel before approval."
     }
   },
-  "cache_bust": "1.14.13-auto"
+  "cache_bust": "1.14.14-auto"
 }
