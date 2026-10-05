@@ -1,7 +1,7 @@
 from pathlib import Path
 import hashlib,json,zipfile,py_compile,tempfile
 SRC=Path("packages/LONGFORM_FACTORY_RESULT_FOCUS_FIX_1_14_9.lfupdate.zip")
-OUT=Path("packages/LONGFORM_FACTORY_GREENLIGHT_STABLE_UI_1_14_12.lfupdate.zip")
+OUT=Path("packages/LONGFORM_FACTORY_UPDATER_FRESHNESS_GREENLIGHT_1_14_13.lfupdate.zip")
 def sha(b): return hashlib.sha256(b).hexdigest()
 with zipfile.ZipFile(SRC) as z: files={n:z.read(n) for n in z.namelist()}
 ap="payload/adapters/channels/jp_bts/production_adapter_v11.py"
@@ -80,7 +80,7 @@ if "greenlight-review-11411" not in text:
 '''
 if anchor not in bt: raise RuntimeError("runtime anchor missing")
 bt=bt.replace(anchor,patch+"\n"+anchor,1); files[boot]=bt.encode()
-m=json.loads(files["update_manifest.json"]);m.update(package_id="LONGFORM_FACTORY_GREENLIGHT_STABLE_UI_1_14_12",version="1.14.13",from_versions=["1.14.11"],title="Updater Freshness + Greenlight Stable UI",summary="Makes remote feed freshness intrinsic to UpdateManager and keeps Greenlight actions stable without polling.")
+m=json.loads(files["update_manifest.json"]);m.update(package_id="LONGFORM_FACTORY_UPDATER_FRESHNESS_GREENLIGHT_1_14_13",version="1.14.13",from_versions=["1.14.11"],title="Updater Freshness + Greenlight Stable UI",summary="Makes remote feed freshness intrinsic to UpdateManager and keeps Greenlight actions stable without polling.")
 for f in m["files"]:
  if f["source"] in files:f["sha256"]=sha(files[f["source"]])
 files["update_manifest.json"]=(json.dumps(m,ensure_ascii=False,indent=2)+"\n").encode()
@@ -99,13 +99,13 @@ with zipfile.ZipFile(OUT) as z:
  mm=json.loads(z.read("update_manifest.json"));assert mm["version"]=="1.14.13"
  for f in mm["files"]:assert sha(z.read(f["source"]))==f["sha256"]
 digest=sha(OUT.read_bytes())
-feed={"schema":"LONGFORM_FACTORY_UPDATE_FEED_v1","generated_at":"AUTO","channels":{"dev":{"version":"1.14.13","package_url":"https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_GREENLIGHT_STABLE_UI_1_14_12.lfupdate.zip","package_sha256":digest,"updater_api_min":"1.1","published_at":"AUTO","title":"Greenlight Review Stable UI","summary":"Eliminates Greenlight action flicker with mutation-driven remounting."}},"cache_bust":"1.14.13-auto"}
-Path("feed.v11412.json").write_text(json.dumps(feed,indent=2)+"\n");Path("staging/v1.14.13/package_sha256.txt").write_text(digest+"\n")
-assert m["package_id"]=="LONGFORM_FACTORY_GREENLIGHT_STABLE_UI_1_14_12"
+feed={"schema":"LONGFORM_FACTORY_UPDATE_FEED_v1","generated_at":"AUTO","channels":{"dev":{"version":"1.14.13","package_url":"https://raw.githubusercontent.com/Kapka87/longform-factory-updates/main/packages/LONGFORM_FACTORY_UPDATER_FRESHNESS_GREENLIGHT_1_14_13.lfupdate.zip","package_sha256":digest,"updater_api_min":"1.1","published_at":"AUTO","title":"Updater Freshness + Greenlight Stable UI","summary":"Makes feed freshness intrinsic to UpdateManager and preserves stable Greenlight actions."}},"cache_bust":"1.14.13-auto"}
+Path("feed.v11413.json").write_text(json.dumps(feed,indent=2)+"\n");Path("staging/v1.14.13/package_sha256.txt").write_text(digest+"\n")
+assert m["package_id"]=="LONGFORM_FACTORY_UPDATER_FRESHNESS_GREENLIGHT_1_14_13"
 assert m["version"]=="1.14.13" and m["from_versions"]==["1.14.11"]
 assert feed["channels"]["dev"]["version"]=="1.14.13"
 assert feed["channels"]["dev"]["package_url"].endswith(OUT.name)
-assert Path("feed.v11412.json").exists()
+assert Path("feed.v11413.json").exists()
 print(digest)
 
 # publish trigger
