@@ -56,7 +56,7 @@ patch=r'''
 # v1.14.10: expose Greenlight NEEDS_REVIEW as an explicit lifecycle review action.
 if "greenlight-review-11410" not in text:
     # Add a small client-side review control to Greenlight Review detail.
-    ui = r"""<script id="greenlight-review-11410">
+    ui = r'''<script id="greenlight-review-11410">
 document.addEventListener("click",async function(ev){
  const b=ev.target.closest("[data-greenlight-decision]"); if(!b)return;
  const id=b.getAttribute("data-episode-id"), decision=b.getAttribute("data-greenlight-decision");
@@ -74,7 +74,7 @@ document.addEventListener("click",async function(ev){
     # Add buttons to the rendered Greenlight NEEDS_REVIEW view.
     needle='Greenlight Review'
     # Generic post-render injection avoids coupling to a specific detail template.
-    injector=r"""<script>
+    injector=r'''<script>
 function lfGreenlightButtons(){
  const title=[...document.querySelectorAll("h1,h2,h3")].find(x=>x.textContent.trim()==="Greenlight Review");
  if(!title||document.getElementById("greenlight-actions-11410"))return;
