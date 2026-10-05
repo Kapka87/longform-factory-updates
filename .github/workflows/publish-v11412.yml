@@ -1,0 +1,27 @@
+name: Publish Longform Factory v1.14.12
+on:
+  push:
+    paths:
+      - "staging/v1.14.12/build_update.py"
+permissions:
+  contents: write
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python staging/v1.14.12/build_update.py
+      - name: Publish package and feed
+        run: |
+          cp feed.v11412.json feed.json
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add packages/LONGFORM_FACTORY_GREENLIGHT_STABLE_UI_1_14_12.lfupdate.zip feed.json staging/v1.14.12/package_sha256.txt
+          git commit -m "Publish Longform Factory v1.14.12 [skip ci]"
+          git pull --rebase origin main
+          git push
