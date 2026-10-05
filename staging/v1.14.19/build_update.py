@@ -1,6 +1,6 @@
 from pathlib import Path
 import hashlib,json,zipfile,py_compile,tempfile
-SRC=Path("packages/LONGFORM_FACTORY_STABLE_RECOVERY_1_14_18.lfupdate.zip")
+SRC=Path("packages/LONGFORM_FACTORY_GREENLIGHT_PANEL_TARGET_FIX_1_14_15.lfupdate.zip")
 OUT=Path("packages/LONGFORM_FACTORY_GREENLIGHT_ADAPTER_FIX_1_14_19.lfupdate.zip")
 def sha(b): return hashlib.sha256(b).hexdigest()
 with zipfile.ZipFile(SRC) as z: files={n:z.read(n) for n in z.namelist()}
@@ -17,7 +17,7 @@ new='''    def review_greenlight(self, episode_id, decision, note=""):
             raise RuntimeError("Episode manifest not found: "+str(manifest_path))
         m=json.loads(manifest_path.read_text(encoding="utf-8"))
 '''
-if old not in s:\n    print("DEBUG review?", "def review_greenlight" in s, "episode_dir?", "self._episode_dir" in s, "load_manifest?", "self._load_manifest" in s)\n    raise RuntimeError("broken review_greenlight anchor missing")
+if old not in s: raise RuntimeError("broken review_greenlight anchor missing")
 s=s.replace(old,new,1)
 # Align approval with canonical JP_BTS lifecycle: RESEARCH is the stage after GREENLIGHT.
 old2='''            self._set_stage(m,"GREENLIGHT","COMPLETE")
@@ -30,7 +30,7 @@ if old2 not in s: raise RuntimeError("noncanonical EDITORIAL transition anchor m
 s=s.replace(old2,new2,1)
 files[ap]=s.encode()
 boot="payload/control_center_v114_bootstrap.py"
-bt=files[boot].decode().replace('FACTORY_VERSION="1.14.18"','FACTORY_VERSION="1.14.19"').replace('<div class="ver">v1.14.18</div>','<div class="ver">v1.14.19</div>')
+bt=files[boot].decode().replace('FACTORY_VERSION="1.14.15"','FACTORY_VERSION="1.14.19"').replace('<div class="ver">v1.14.15</div>','<div class="ver">v1.14.19</div>')
 assert "UpdateManager feed fetch callsite anchor missing" not in bt and "_lfcb_runtime=" not in bt
 files[boot]=bt.encode()
 m=json.loads(files["update_manifest.json"])
