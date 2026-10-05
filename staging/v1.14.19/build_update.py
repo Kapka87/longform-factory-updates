@@ -6,26 +6,12 @@ def sha(b): return hashlib.sha256(b).hexdigest()
 with zipfile.ZipFile(SRC) as z: files={n:z.read(n) for n in z.namelist()}
 ap="payload/adapters/channels/jp_bts/production_adapter_v11.py"
 s=files[ap].decode()
-old='''    def review_greenlight(self, episode_id, decision, note=""):
-        ep=self._episode_dir(episode_id)
-        m=self._load_manifest(ep)
-'''
-new='''    def review_greenlight(self, episode_id, decision, note=""):
-        ep=self.root/"projects"/self.CHANNEL_ID/"episodes"/episode_id
-        manifest_path=ep/"episode_manifest.json"
-        if not manifest_path.exists():
-            raise RuntimeError("Episode manifest not found: "+str(manifest_path))
-        m=json.loads(manifest_path.read_text(encoding="utf-8"))
-'''
-if old not in s:\n    Path("staging/v1.14.19/adapter_probe.txt").write_text(s,encoding="utf-8")\n    raise RuntimeError("broken review_greenlight anchor missing")
+old='ep=self._episode_dir(episode_id); m=self._load_manifest(ep)'
+new='ep=self.root/"projects"/self.CHANNEL_ID/"episodes"/episode_id; manifest_path=ep/"episode_manifest.json"; m=json.loads(manifest_path.read_text(encoding="utf-8"))'
+if old not in s: raise RuntimeError("broken review_greenlight path anchor missing")
 s=s.replace(old,new,1)
-# Align approval with canonical JP_BTS lifecycle: RESEARCH is the stage after GREENLIGHT.
-old2='''            self._set_stage(m,"GREENLIGHT","COMPLETE")
-            self._set_stage(m,"EDITORIAL","READY",current=True)
-'''
-new2='''            self._set_stage(m,"GREENLIGHT","COMPLETE",decision="GREENLIGHT")
-            self._set_stage(m,"RESEARCH","READY",current=True)
-'''
+old2='self._set_stage(m,"GREENLIGHT","COMPLETE"); self._set_stage(m,"EDITORIAL","READY",current=True)'
+new2='self._set_stage(m,"GREENLIGHT","COMPLETE",decision="GREENLIGHT"); self._set_stage(m,"RESEARCH","READY",current=True)'
 if old2 not in s: raise RuntimeError("noncanonical EDITORIAL transition anchor missing")
 s=s.replace(old2,new2,1)
 files[ap]=s.encode()
