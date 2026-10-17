@@ -1,0 +1,45 @@
+name: EN BTS Discovery Gate - manual official collection
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: en-bts-discovery-manual
+  cancel-in-progress: false
+
+jobs:
+  official-collection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: tools/discovery_gate_v1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Offline tests - no key, no API calls
+        run: python -m unittest discover -s tests -v
+      - name: Validate credential existence
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          if [ -z "${YOUTUBE_API_KEY}" ]; then
+            echo 'LIVE_BLOCKED_NO_API_KEY: Add repository Actions secret YOUTUBE_API_KEY.'
+            exit 3
+          fi
+      - name: Fetch official YouTube metadata - no custom scoring
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python discovery_gate.py --out discovery-output --search-budget 26
+      - name: Upload expiring unmodified metadata - no commit
+        uses: actions/upload-artifact@v4
+        with:
+          name: en-bts-discovery-v1-${{ github.run_number }}
+          path: tools/discovery_gate_v1/discovery-output/
+          retention-days: 7
+          if-no-files-found: error
