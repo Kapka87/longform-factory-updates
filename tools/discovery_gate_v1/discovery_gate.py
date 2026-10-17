@@ -25,6 +25,21 @@ SEED_FORMATS = (
     'I spent a week', 'mistakes to avoid', 'hidden history',
     'under $', 'I built', 'the truth about',
 )
+# Title-only quality warnings are prompts for human review, NEVER factual findings.
+NON_LATIN_TITLE_RE = re.compile(r'[\u0600-\u06ff\u0900-\u0dff]')
+THIRD_PARTY_MEDIA_TITLE_RE = re.compile(r'\b(?:full\s+(?:nigerian\s+)?movie|lost\s+scene)\b',re.I)
+
+
+def title_review_flags(title):
+    """Detect metadata mismatches/risk hints without inferring audio or copyright status."""
+    flags=[]
+    if NON_LATIN_TITLE_RE.search(title):
+        flags.append('TITLE_SCRIPT_REVIEW_ONLY')
+    if THIRD_PARTY_MEDIA_TITLE_RE.search(title):
+        flags.append('THIRD_PARTY_MEDIA_RIGHTS_REVIEW_ONLY')
+    return flags
+
+
 FIELDS = ('video_id','url','title','channel_id','channel_title','published_at',
           'duration_seconds','view_count','subscriber_count','subscriber_hidden',
           'audio_language','language_status','source_status','channel_size_status',
@@ -184,7 +199,7 @@ def verified_collect(api,now,search_budget=26,max_candidates=130,max_channels=35
         if cid not in admitted_channels and len(admitted_channels)>=max_channels:
             continue
         ch=channel_data.get(cid)
-        flags=[]
+        flags=title_review_flags(v.get('title',''))
         if not ch:
             rejects['MISSING_CHANNEL_METADATA']+=1;continue
         st=ch.get('statistics',{})
