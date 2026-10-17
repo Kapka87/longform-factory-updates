@@ -2,7 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from discovery_gate import FixtureAPI, parse_time, verified_collect, write_outputs, dur_seconds, safe_csv
+from discovery_gate import FixtureAPI, parse_time, verified_collect, write_outputs, dur_seconds, safe_csv, title_review_flags
 
 FIXTURE=Path(__file__).with_name('sample_fixture.json')
 
@@ -11,6 +11,12 @@ class DiscoveryTests(unittest.TestCase):
     def setUpClass(cls):
         cls.fixture=json.loads(FIXTURE.read_text())
         cls.result=verified_collect(FixtureAPI(cls.fixture),parse_time('2026-10-17T00:00:00Z'),search_budget=3)
+    def test_title_review_flags_are_not_factual_verdicts(self):
+        self.assertIn('TITLE_SCRIPT_REVIEW_ONLY',title_review_flags('History — मेसोपोटामिया'))
+        self.assertIn('THIRD_PARTY_MEDIA_RIGHTS_REVIEW_ONLY',title_review_flags('Jumanji FULL MOVIE'))
+        self.assertIn('THIRD_PARTY_MEDIA_RIGHTS_REVIEW_ONLY',title_review_flags('Wizard of Oz Lost Scene'))
+        self.assertEqual(title_review_flags('Why Are Wolves So Strange?'),[])
+
     def test_iso_duration(self):
         self.assertEqual(dur_seconds('PT8M'),480)
         self.assertEqual(dur_seconds('PT1H2M3S'),3723)
