@@ -42,3 +42,7 @@ python discovery_gate.py --fixture tests/sample_fixture.json --date 2026-10-17T0
 ## Why shared repository initially?
 
 The GitHub integration can write to the existing `Kapka87/longform-factory-updates` repository but cannot create a new repository or manage Actions secrets. This collector is isolated under `tools/discovery_gate_v1/` and a separate, **manual-only** workflow. A PR/branch keeps current release paths untouched. No production updater step is modified. Moving to a dedicated repo can be done later without altering this program.
+
+### v1.1.1 metadata-only QC patch (2026-10-17)
+
+The first live run confirmed 36 candidates across 35 channels, but metadata declared `en` for some videos whose titles include non-Latin scripts and surfaced film-based titles. The collector now emits **review-only** flags `TITLE_SCRIPT_REVIEW_ONLY` and `THIRD_PARTY_MEDIA_RIGHTS_REVIEW_ONLY` from titles. These are not proof that the audio is non-English or that copyrights were infringed. Audio, visuals, rights, authenticity, and Outlier validation still require D2 manual checks. The original first-run artifact remains unchanged.
